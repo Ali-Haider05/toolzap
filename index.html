@@ -24,6 +24,12 @@
     .tool-icon{font-size:30px;margin-bottom:10px;}
     .tool-title{font-size:17px;font-weight:600;}
     .tool-desc{font-size:13px;color:#aaa;text-align:center;}
+    .pdf-upload-zone{display:none;flex-direction:column;align-items:center;gap:12px;background:#202437;padding:30px 28px 18px;border-radius:12px;box-shadow:0 4px 24px #0002;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:300;}
+    .pdf-upload-zone.active{display:flex;}
+    .close-btn{position:absolute;top:4px;right:20px;color:#888;background:none;border:none;font-size:1.6em;cursor:pointer;}
+    .pdf-upload-zone label{font-size:1.1em;font-weight:500;margin-bottom:2px;}
+    .pdf-upload-zone input[type="file"]{margin-bottom:12px;}
+    .pdf-upload-zone .note{font-size:0.92em;color:#ff9636;}
     footer{text-align:center;color:#444;margin:50px 0 10px;}
   </style>
 </head>
@@ -43,7 +49,7 @@
   </section>
 
   <section class="tools-grid" id="tools">
-    <div class="tool-card">
+    <div class="tool-card" id="pdf2word-card">
       <div class="tool-icon">📄</div>
       <div class="tool-title">PDF to Word</div>
       <div class="tool-desc">Easily convert PDF to editable Word files in seconds.</div>
@@ -66,8 +72,33 @@
     <!-- Add more tool cards as you develop new features! -->
   </section>
 
+  <!-- PDF to Word Upload Pop-up -->
+  <div class="pdf-upload-zone" id="pdfUploadZone">
+    <button class="close-btn" onclick="closePdfUpload()">×</button>
+    <label for="pdfInput">Upload PDF File:</label>
+    <input type="file" id="pdfInput" accept="application/pdf" />
+    <span class="note">Conversion coming soon!</span>
+  </div>
+
   <footer>
     &copy; 2026 ToolZap | Built by Ali-Haider05
   </footer>
+
+  <script>
+    // Open PDF Upload Pop-up on card click
+    document.getElementById('pdf2word-card').onclick = function() {
+      document.getElementById('pdfUploadZone').classList.add('active');
+    };
+    function closePdfUpload() {
+      document.getElementById('pdfUploadZone').classList.remove('active');
+    }
+    // Optional: Close popup when clicking outside
+    window.onclick = function(e) {
+      const zone = document.getElementById('pdfUploadZone');
+      if (zone.classList.contains('active') && !zone.contains(e.target) && e.target.id!== 'pdf2word-card') {
+        closePdfUpload();
+      }
+    };
+  </script>
 </body>
 </html>
