@@ -24,12 +24,12 @@
     .tool-icon{font-size:30px;margin-bottom:10px;}
     .tool-title{font-size:17px;font-weight:600;}
     .tool-desc{font-size:13px;color:#aaa;text-align:center;}
-    .pdf-upload-zone{display:none;flex-direction:column;align-items:center;gap:12px;background:#202437;padding:30px 28px 18px;border-radius:12px;box-shadow:0 4px 24px #0002;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:300;}
-    .pdf-upload-zone.active{display:flex;}
+    .tool-upload-zone{display:none;flex-direction:column;align-items:center;gap:12px;background:#202437;padding:30px 28px 18px;border-radius:12px;box-shadow:0 4px 24px #0002;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:300;}
+    .tool-upload-zone.active{display:flex;}
     .close-btn{position:absolute;top:4px;right:20px;color:#888;background:none;border:none;font-size:1.6em;cursor:pointer;}
-    .pdf-upload-zone label{font-size:1.1em;font-weight:500;margin-bottom:2px;}
-    .pdf-upload-zone input[type="file"]{margin-bottom:12px;}
-    .pdf-upload-zone .note{font-size:0.92em;color:#ff9636;}
+    .tool-upload-zone label{font-size:1.1em;font-weight:500;margin-bottom:2px;}
+    .tool-upload-zone input[type="file"]{margin-bottom:12px;}
+    .tool-upload-zone .note{font-size:0.92em;color:#ff9636;}
     footer{text-align:center;color:#444;margin:50px 0 10px;}
   </style>
 </head>
@@ -54,29 +54,46 @@
       <div class="tool-title">PDF to Word</div>
       <div class="tool-desc">Easily convert PDF to editable Word files in seconds.</div>
     </div>
-    <div class="tool-card">
+    <div class="tool-card" id="word2pdf-card">
       <div class="tool-icon">📝</div>
       <div class="tool-title">Word to PDF</div>
       <div class="tool-desc">Convert Microsoft Word documents to PDF format.</div>
     </div>
-    <div class="tool-card">
+    <div class="tool-card" id="imgcompress-card">
       <div class="tool-icon">🖼️</div>
       <div class="tool-title">Image Compressor</div>
       <div class="tool-desc">Shrink images (JPG, PNG, etc.) without losing quality.</div>
     </div>
-    <div class="tool-card">
+    <div class="tool-card" id="jpg2png-card">
       <div class="tool-icon">🔁</div>
       <div class="tool-title">JPG to PNG</div>
       <div class="tool-desc">Quickly convert JPG images to high-quality PNG files.</div>
     </div>
-    <!-- Add more tool cards as you develop new features! -->
   </section>
 
-  <!-- PDF to Word Upload Pop-up -->
-  <div class="pdf-upload-zone" id="pdfUploadZone">
-    <button class="close-btn" onclick="closePdfUpload()">×</button>
+  <!-- Upload Popups for Each Tool -->
+  <div class="tool-upload-zone" id="pdfUploadZone">
+    <button class="close-btn" onclick="closeUpload('pdfUploadZone')">×</button>
     <label for="pdfInput">Upload PDF File:</label>
     <input type="file" id="pdfInput" accept="application/pdf" />
+    <span class="note">Conversion coming soon!</span>
+  </div>
+  <div class="tool-upload-zone" id="wordUploadZone">
+    <button class="close-btn" onclick="closeUpload('wordUploadZone')">×</button>
+    <label for="wordInput">Upload Word File:</label>
+    <input type="file" id="wordInput" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+    <span class="note">Conversion coming soon!</span>
+  </div>
+  <div class="tool-upload-zone" id="imgCompressZone">
+    <button class="close-btn" onclick="closeUpload('imgCompressZone')">×</button>
+    <label for="imgInput">Upload Image Files:</label>
+    <input type="file" id="imgInput" multiple accept="image/*" />
+    <span class="note">Compression coming soon!</span>
+  </div>
+  <div class="tool-upload-zone" id="jpg2pngZone">
+    <button class="close-btn" onclick="closeUpload('jpg2pngZone')">×</button>
+    <label for="jpgInput">Upload JPG Images:</label>
+    <input type="file" id="jpgInput" multiple accept="image/jpeg,image/jpg" />
     <span class="note">Conversion coming soon!</span>
   </div>
 
@@ -85,20 +102,35 @@
   </footer>
 
   <script>
-    // Open PDF Upload Pop-up on card click
+    // Tool Card - Upload Popups
     document.getElementById('pdf2word-card').onclick = function() {
-      document.getElementById('pdfUploadZone').classList.add('active');
+      openUpload('pdfUploadZone');
     };
-    function closePdfUpload() {
-      document.getElementById('pdfUploadZone').classList.remove('active');
+    document.getElementById('word2pdf-card').onclick = function() {
+      openUpload('wordUploadZone');
+    };
+    document.getElementById('imgcompress-card').onclick = function() {
+      openUpload('imgCompressZone');
+    };
+    document.getElementById('jpg2png-card').onclick = function() {
+      openUpload('jpg2pngZone');
+    };
+
+    function openUpload(id) {
+      document.getElementById(id).classList.add('active');
     }
-    // Optional: Close popup when clicking outside
-    window.onclick = function(e) {
-      const zone = document.getElementById('pdfUploadZone');
-      if (zone.classList.contains('active') && !zone.contains(e.target) && e.target.id!== 'pdf2word-card') {
-        closePdfUpload();
-      }
-    };
+    function closeUpload(id) {
+      document.getElementById(id).classList.remove('active');
+    }
+    // Close popup when clicking outside
+    window.addEventListener('click', function(e) {
+      [ 'pdfUploadZone', 'wordUploadZone', 'imgCompressZone', 'jpg2pngZone' ].forEach(function(zoneId) {
+        var zone = document.getElementById(zoneId);
+        if (zone && zone.classList.contains('active') && !zone.contains(e.target) && !e.target.classList.contains('tool-card')) {
+          closeUpload(zoneId);
+        }
+      });
+    });
   </script>
 </body>
 </html>
