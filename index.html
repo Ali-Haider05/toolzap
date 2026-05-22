@@ -3,8 +3,24 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>ToolZap - Free Online File Tools</title>
-<meta name="description" content="Free online tools: PDF to Word, Word to PDF, Image Compressor, JPG to PNG. No signup, 100% private."/>
+
+<title>ToolZap - Free Online File Tools | Word to PDF & Image Compressor</title>
+<meta name="description" content="ToolZap offers fast, free, and 100% private online file tools. Convert Word to PDF, extract PDF text, merge or split PDFs, and compress or resize images instantly in your browser without any signup."/>
+<meta name="keywords" content="ToolZap, free online file tools, word to pdf, pdf to word, merge pdf, split pdf, image compressor, jpg to png, png to jpg, resize image, browser based tools, privacy first conversion, no signup file tools"/>
+<meta name="author" content="Ali Haider"/>
+<meta name="robots" content="index, follow"/>
+
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://alihaiderdev.me/toolzap/"/>
+<meta property="og:title" content="ToolZap - Free Online File Tools | Word to PDF & Image Compressor"/>
+<meta property="og:description" content="Fast, free, and 100% private online file tools. Convert, merge, split, or compress your files directly in your browser without signup."/>
+<meta property="og:image" content="https://alihaiderdev.me/toolzap/favicon.ico"/>
+
+<meta property="twitter:card" content="summary_large_image"/>
+<meta property="twitter:url" content="https://alihaiderdev.me/toolzap/"/>
+<meta property="twitter:title" content="ToolZap - Free Online File Tools"/>
+<meta property="twitter:description" content="Fast, free, and 100% private online file tools. Convert, merge, split, or compress your files directly in your browser without signup."/>
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PC4TDXJD1N"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -12,6 +28,7 @@
   gtag('js', new Date());
   gtag('config', 'G-PC4TDXJD1N');
 </script>
+
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:#0f1117;color:#fff;font-family:'Segoe UI',sans-serif;min-height:100vh;}
@@ -165,7 +182,6 @@ canvas{display:none;}
   </div>
 </nav>
 
-<!-- HOME -->
 <div class="page active" id="homePage">
   <div class="hero">
     <h1>All-in-One <span>File Tools</span><br/>Fast &amp; Free</h1>
@@ -206,10 +222,9 @@ canvas{display:none;}
       <div class="tool-card" onclick="showTool('ri')"><span class="tbadge bn">New</span><div class="tool-icon">&#128256;</div><div class="tool-name">Resize Image</div><div class="tool-desc">Change image dimensions easily</div></div>
     </div>
   </div>
-  <div class="footer">Made with &#10084; in Pakistan &mdash; <span>ToolZap</span> &copy; 2025 &mdash; Always free</div>
+  <div class="footer">Made with &#10084; in Pakistan &mdash; <span>ToolZap</span> &copy; 2026 &mdash; Always free</div>
 </div>
 
-<!-- WORD TO PDF -->
 <div class="page" id="w2pPage">
   <div class="tool-page">
     <button class="tool-back" onclick="showHome()">&#8592; Back to Tools</button>
@@ -225,7 +240,6 @@ canvas{display:none;}
   </div>
 </div>
 
-<!-- PDF TO WORD -->
 <div class="page" id="p2wPage">
   <div class="tool-page">
     <button class="tool-back" onclick="showHome()">&#8592; Back to Tools</button>
@@ -242,7 +256,6 @@ canvas{display:none;}
   </div>
 </div>
 
-<!-- MERGE PDF -->
 <div class="page" id="mpdfPage">
   <div class="tool-page">
     <button class="tool-back" onclick="showHome()">&#8592; Back to Tools</button>
@@ -259,7 +272,6 @@ canvas{display:none;}
   </div>
 </div>
 
-<!-- SPLIT PDF -->
 <div class="page" id="spdfPage">
   <div class="tool-page">
     <button class="tool-back" onclick="showHome()">&#8592; Back to Tools</button>
@@ -275,7 +287,6 @@ canvas{display:none;}
   </div>
 </div>
 
-<!-- JPG TO PNG -->
 <div class="page" id="j2pPage">
   <div class="tool-page">
     <button class="tool-back" onclick="showHome()">&#8592; Back to Tools</button>
@@ -292,7 +303,6 @@ canvas{display:none;}
   </div>
 </div>
 
-<!-- PNG TO JPG -->
 <div class="page" id="p2jPage">
   <div class="tool-page">
     <button class="tool-back" onclick="showHome()">&#8592; Back to Tools</button>
@@ -310,7 +320,6 @@ canvas{display:none;}
   </div>
 </div>
 
-<!-- RESIZE IMAGE -->
 <div class="page" id="riPage">
   <div class="tool-page">
     <button class="tool-back" onclick="showHome()">&#8592; Back to Tools</button>
@@ -336,7 +345,6 @@ canvas{display:none;}
   </div>
 </div>
 
-<!-- IMAGE COMPRESSOR -->
 <div class="page" id="icPage">
   <div class="tool-page">
     <button class="tool-back" onclick="showHome()">&#8592; Back to Tools</button>
@@ -347,8 +355,8 @@ canvas{display:none;}
     <div class="err-box" id="ic-err">&#9888; Only JPG, PNG, WebP images are supported!</div>
     <div class="settings-box" id="ic-set"><h4>&#9881; Compression Quality</h4><div class="q-row"><label>Quality</label><input type="range" id="ic-sl" min="10" max="95" value="70" oninput="icQ(this.value)"/>  <span class="q-val" id="ic-qv">70%</span></div><div class="q-labels"><span>Smaller file</span><span>Better quality</span></div></div>
     <div class="prev-grid" id="ic-pg" style="display:none;">
-      <div class="prev-card"><h5>&#128247; Original</h5><img id="ic-oi" src="" alt="Original"/><div class="psz">Size: <span id="ic-os">—</span></div></div>
-      <div class="prev-card"><h5>&#9989; Compressed</h5><img id="ic-ci" src="" alt="Compressed"/><div class="psz">Size: <span id="ic-cs">—</span></div><div class="saving-badge" id="ic-sv" style="display:none;"></div></div>
+      <div class="prev-card"><h5>&#128247; Original</h5><img id="ic-oi" src="" alt="Original Image File"/><div class="psz">Size: <span id="ic-os">—</span></div></div>
+      <div class="prev-card"><h5>&#9989; Compressed</h5><img id="ic-ci" src="" alt="Compressed Image File"/><div class="psz">Size: <span id="ic-cs">—</span></div><div class="saving-badge" id="ic-sv" style="display:none;"></div></div>
     </div>
     <div class="cvt-wrap" id="ic-cvt"><button class="btn btn-gold btn-full" onclick="doIC()">&#9889; Compress Image</button></div>
     <div class="prog-wrap" id="ic-prog"><div class="prog-bar"><div class="prog-fill pf-green" id="ic-pf"></div></div><div class="prog-txt" id="ic-pt">Compressing...</div></div>
