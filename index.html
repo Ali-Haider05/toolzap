@@ -184,21 +184,16 @@ body{background:#0f1117;color:#fff;font-family:'Segoe UI',sans-serif;min-height:
 .stat-item .sl{font-size:11px;color:#555;margin-top:2px;}
 .cvt-wrap{margin-top:14px;display:none;}
 .note-box{background:#1a1200;border:1px solid #f59e0b22;border-radius:10px;padding:12px 16px;margin-top:12px;font-size:12px;color:#f59e0b;display:none;}
-.multi-list{display:flex;flex-direction:column;gap:8px;margin-top:14px;}
+.multi-list{display:flex;flex-direction:column;gap:8px;margin-top:14px;margin-bottom:14px;}
 .ml-item{background:#1e2130;border:1px solid #ffffff10;border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:12px;}
 .ml-item .ml-icon{font-size:24px;}
 .ml-item .ml-info{flex:1;}
 .ml-item .ml-name{font-size:13px;font-weight:500;}
 .ml-item .ml-size{font-size:11px;color:#666;margin-top:2px;}
-.ml-item .ml-rm{background:none;border:none;color:#666;font-size:18px;cursor:pointer;}
-.ml-item .ml-rm:hover{color:#ef4444;}
-.add-more-btn{background:#1e2130;border:2px dashed #ffffff15;border-radius:10px;padding:14px;text-align:center;cursor:pointer;font-size:13px;color:#666;margin-top:8px;width:100%;}
-.add-more-btn:hover{border-color:#f59e0b55;color:#f59e0b;}
 .dl-list{display:flex;flex-direction:column;gap:8px;margin-top:12px;}
 .dl-item{background:#1e2130;border:1px solid #ffffff10;border-radius:10px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
 .dl-item .dl-name{font-size:13px;color:#aaa;}
 
-/* 🛠️ Naye FAQ, Feedback aur Footer Sections ka Style */
 .faq-section{padding:50px 32px;max-width:850px;margin:30px auto 0;border-top:1px solid #ffffff08;}
 .faq-title{font-size:24px;font-weight:800;text-align:center;margin-bottom:24px;}
 .faq-title span{color:#f59e0b;}
@@ -271,7 +266,7 @@ canvas{display:none;}
   <div class="divider"></div>
   
   <div class="section" id="img-sec">
-    <div class="section-header"><span class="section-icon">&#128444;</span><span class="section-title">Image Tools (Bulk Update)</span></div>
+    <div class="section-header"><span class="section-icon">&#128444;</span><span class="section-title">Image Tools</span></div>
     <div class="tools-grid">
       <div class="tool-card" onclick="showTool('ic')"><span class="tbadge bp">Popular</span><div class="tool-icon">&#128190;</div><div class="tool-name">Image Compressor</div><div class="tool-desc">Compress multiple images without losing quality</div></div>
       <div class="tool-card" onclick="showTool('j2p')"><span class="tbadge bp">Popular</span><div class="tool-icon">&#128247;</div><div class="tool-name">JPG to PNG</div><div class="tool-desc">Convert bulk JPG images to PNG format</div></div>
@@ -319,7 +314,6 @@ canvas{display:none;}
     <div class="cvt-wrap" id="w2p-cvt"><button class="btn btn-gold btn-full" onclick="doW2P()">&#128196; Convert to PDF</button></div>
     <div class="prog-wrap" id="w2p-prog"><div class="prog-bar"><div class="prog-fill pf-gold" id="w2p-pf"></div></div><div class="prog-txt" id="w2p-pt">Converting...</div></div>
     <div class="success-box sb-green" id="w2p-ok"><div class="si">&#9989;</div><h3>PDF Ready!</h3><p id="w2p-msg"></p><div class="sb-btns"><button class="btn btn-green" onclick="dlW2P()">&#8681; Download PDF</button><button class="btn btn-outline" onclick="rst('w2p')">&#8635; Convert Another</button></div></div>
-    <div class="tips"><h4>How it works</h4><div class="tip"><span class="tip-ic">&#8679;</span>Upload Word file</div><div class="tip"><span class="tip-ic">&#9881;</span>Processed in your browser</div><div class="tip"><span class="tip-ic">&#8681;</span>Download PDF</div><div class="tip"><span class="tip-ic">&#128274;</span>Files never leave your device</div></div>
   </div>
 </div>
 
@@ -335,7 +329,6 @@ canvas{display:none;}
     <div class="prog-wrap" id="p2w-prog"><div class="prog-bar"><div class="prog-fill pf-blue" id="p2w-pf"></div></div><div class="prog-txt" id="p2w-pt">Converting...</div></div>
     <div class="success-box sb-blue" id="p2w-ok"><div class="si">&#9989;</div><h3>Word File Ready!</h3><p id="p2w-msg"></p><div class="sb-btns"><button class="btn btn-blue" onclick="dlP2W()">&#8681; Download Word</button><button class="btn btn-outline" onclick="rst('p2w')">&#8635; Convert Another</button></div></div>
     <div class="note-box" id="p2w-note">&#9888; Note: Complex PDFs with images may lose some formatting. Text is fully preserved.</div>
-    <div class="tips"><h4>How it works</h4><div class="tip"><span class="tip-ic">&#8679;</span>Upload PDF file</div><div class="tip"><span class="tip-ic">&#9881;</span>Text extracted from all pages</div><div class="tip"><span class="tip-ic">&#8681;</span>Download .docx file</div><div class="tip"><span class="tip-ic">&#128274;</span>Files never leave your device</div></div>
   </div>
 </div>
 
@@ -351,7 +344,6 @@ canvas{display:none;}
     <div class="cvt-wrap" id="mpdf-cvt"><button class="btn btn-gold btn-full" onclick="doMPDF()">&#128203; Merge PDFs</button></div>
     <div class="prog-wrap" id="mpdf-prog"><div class="prog-bar"><div class="prog-fill pf-red" id="mpdf-pf"></div></div><div class="prog-txt" id="mpdf-pt">Merging...</div></div>
     <div class="success-box sb-red" id="mpdf-ok"><div class="si">&#9989;</div><h3>Merged PDF Ready!</h3><p id="mpdf-msg"></p><div class="sb-btns"><button class="btn btn-red" onclick="dlMPDF()">&#8681; Download Merged PDF</button><button class="btn btn-outline" onclick="rst('mpdf')">&#8635; Merge More</button></div></div>
-    <div class="tips"><h4>How it works</h4><div class="tip"><span class="tip-ic">&#8679;</span>Upload 2 or more PDFs</div><div class="tip"><span class="tip-ic">&#9881;</span>Pages combined in order</div><div class="tip"><span class="tip-ic">&#8681;</span>Download single PDF</div><div class="tip"><span class="tip-ic">&#128274;</span>Files never leave your device</div></div>
   </div>
 </div>
 
@@ -366,14 +358,13 @@ canvas{display:none;}
     <div class="cvt-wrap" id="spdf-cvt"><button class="btn btn-gold btn-full" onclick="doSPDF()">&#9986; Split PDF</button></div>
     <div class="prog-wrap" id="spdf-prog"><div class="prog-bar"><div class="prog-fill pf-orange" id="spdf-pf"></div></div><div class="prog-txt" id="spdf-pt">Splitting...</div></div>
     <div class="success-box sb-orange" id="spdf-ok"><div class="si">&#9989;</div><h3>Split Complete!</h3><p id="spdf-msg"></p><div class="dl-list" id="spdf-dllist"></div><div class="sb-btns" style="margin-top:14px;"><button class="btn btn-outline" onclick="rst('spdf')">&#8635; Split Another</button></div></div>
-    <div class="tips"><h4>How it works</h4><div class="tip"><span class="tip-ic">&#8679;</span>Upload a PDF</div><div class="tip"><span class="tip-ic">&#9881;</span>Each page split separately</div><div class="tip"><span class="tip-ic">&#8681;</span>Download each page as PDF</div><div class="tip"><span class="tip-ic">&#128274;</span>Files never leave your device</div></div>
   </div>
 </div>
 
 <div class="page" id="j2pPage">
   <div class="tool-page">
     <button class="tool-back" onclick="showHome()">&#8592; Back to Tools</button>
-    <div class="tool-header"><h2>JPG to <span>PNG</span> (Bulk)</h2><p>Convert multiple JPG/JPEG images to PNG format instantly</p><div class="badge-row"><span class="sbadge">&#128274; No server upload</span><span class="sbadge">&#9889; Batch Support</span><span class="sbadge">&#10004; Free</span></div></div>
+    <div class="tool-header"><h2>JPG to <span>PNG</span></h2><p>Convert multiple JPG/JPEG images to PNG format instantly</p><div class="badge-row"><span class="sbadge">&#128274; No server upload</span><span class="sbadge">&#9889; Batch Support</span><span class="sbadge">&#10004; Free</span></div></div>
     <div class="upload-zone" id="j2p-zone" onclick="document.getElementById('j2p-in').click()"><div class="uz-icon">&#128247;</div><h3>Drop your JPG images here</h3><p>Supports multiple .jpg and .jpeg files</p><button class="btn btn-gold" onclick="event.stopPropagation();document.getElementById('j2p-in').click()">&#8679; Choose Images</button></div>
     <input type="file" id="j2p-in" accept=".jpg,.jpeg,image/jpeg" multiple style="display:none"/>
     <div class="multi-list" id="j2p-list"></div>
@@ -387,7 +378,7 @@ canvas{display:none;}
 <div class="page" id="p2jPage">
   <div class="tool-page">
     <button class="tool-back" onclick="showHome()">&#8592; Back to Tools</button>
-    <div class="tool-header"><h2>PNG to <span>JPG</span> (Bulk)</h2><p>Convert multiple PNG images to JPG format</p><div class="badge-row"><span class="sbadge">&#128274; No server upload</span><span class="sbadge">&#9889; Batch Support</span></div></div>
+    <div class="tool-header"><h2>PNG to <span>JPG</span></h2><p>Convert multiple PNG images to JPG format</p><div class="badge-row"><span class="sbadge">&#128274; No server upload</span><span class="sbadge">&#9889; Batch Support</span></div></div>
     <div class="upload-zone" id="p2j-zone" onclick="document.getElementById('p2j-in').click()"><div class="uz-icon">&#128247;</div><h3>Drop your PNG images here</h3><p>Supports multiple .png files</p><button class="btn btn-gold" onclick="event.stopPropagation();document.getElementById('p2j-in').click()">&#8679; Choose Images</button></div>
     <input type="file" id="p2j-in" accept=".png,image/png" multiple style="display:none"/>
     <div class="multi-list" id="p2j-list"></div>
@@ -426,7 +417,7 @@ canvas{display:none;}
 <div class="page" id="icPage">
   <div class="tool-page">
     <button class="tool-back" onclick="showHome()">&#8592; Back to Tools</button>
-    <div class="tool-header"><h2>Image <span>Compressor</span> (Bulk)</h2><p>Reduce multiple image sizes cleanly at once</p><div class="badge-row"><span class="sbadge">&#128274; Local Optimization</span><span class="sbadge">&#9889; High Speed</span></div></div>
+    <div class="tool-header"><h2>Image <span>Compressor</span></h2><p>Reduce multiple image sizes cleanly at once</p><div class="badge-row"><span class="sbadge">&#128274; Local Optimization</span><span class="sbadge">&#9889; High Speed</span></div></div>
     <div class="upload-zone" id="ic-zone" onclick="document.getElementById('ic-in').click()"><div class="uz-icon">&#128444;</div><h3>Drop images here</h3><p>Supports multiple JPG, PNG, WebP files</p><button class="btn btn-gold" onclick="event.stopPropagation();document.getElementById('ic-in').click()">&#8679; Choose Images</button></div>
     <input type="file" id="ic-in" accept="image/jpeg,image/png,image/webp" multiple style="display:none"/>
     <div class="multi-list" id="ic-list"></div>
@@ -448,11 +439,16 @@ canvas{display:none;}
 <script>
 pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
-// Interactive UI Actions
+// FAQ Accordion Toggle Fix
 function toggleFaq(el) {
-  el.parentElement.classList.toggle('open');
+  const faqItem = el.parentElement;
+  document.querySelectorAll('.faq-item').forEach(item => {
+    if (item !== faqItem) item.classList.remove('open');
+  });
+  faqItem.classList.toggle('open');
 }
 
+// User Feedback Processor
 function sendFeedback() {
   const text = document.getElementById('fb-text').value.trim();
   if(!text) { alert('Please enter some feedback first!'); return; }
@@ -463,9 +459,10 @@ function sendFeedback() {
   alert('Thank you! Your email client has been opened to submit your feedback.');
 }
 
+// Core Engine Utilities
 function gaEvent(action,category,label){if(typeof gtag!=='undefined'){gtag('event',action,{event_category:category,event_label:label});}}
 function showHome(){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById('homePage').classList.add('active');window.scrollTo(0,0);}
-function showTool(n){const m={w2p:'w2pPage',p2w:'p2wPage',j2p:'j2pPage',ic:'icPage',mpdf:'mpdfPage',spdf:'spdfPage',p2j:'p2jPage',ri:'riPage'};const names={w2p:'Word to PDF',p2w:'PDF to Word',j2p:'JPG to PNG',ic:'Image Compressor',mpdf:'Merge PDF',spdf:'Split PDF',p2j:'PNG to JPG',ri:'Resize Image'};document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(m[n]).classList.add('active');window.scrollTo(0,0);gaEvent('tool_open','Tools',names[n]);}
+function showTool(n){const m={w2p:'w2pPage',p2w:'p2wPage',j2p:'j2pPage',ic:'icPage',mpdf:'mpdfPage',spdf:'spdfPage',p2j:'p2jPage',ri:'riPage'};document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(m[n]).classList.add('active');window.scrollTo(0,0);gaEvent('tool_open','Tools',n);}
 function scrollToSection(id){showHome();setTimeout(()=>document.getElementById(id)?.scrollIntoView({behavior:'smooth'}),100);}
 function filterTools(q){q=q.toLowerCase();document.querySelectorAll('.tool-card').forEach(c=>{const t=c.querySelector('.tool-name').textContent.toLowerCase();const d=c.querySelector('.tool-desc').textContent.toLowerCase();c.style.display=(t.includes(q)||d.includes(q))?'flex':'none';});}
 function H(...ids){ids.forEach(id=>{const e=document.getElementById(id);if(e)e.style.display='none';});}
@@ -479,60 +476,60 @@ function rst(t){
   if(t==='w2p'){w2pF=null;w2pB=null;document.getElementById('w2p-in').value='';H('w2p-fi','w2p-cvt','w2p-ok','w2p-prog','w2p-err');}
   else if(t==='p2w'){p2wF=null;p2wB=null;document.getElementById('p2w-in').value='';H('p2w-fi','p2w-cvt','p2w-ok','p2w-prog','p2w-err','p2w-note');}
   else if(t==='j2p'){j2pFiles=[];document.getElementById('j2p-in').value='';document.getElementById('j2p-list').innerHTML='';H('j2p-cvt','j2p-ok','j2p-prog','j2p-err');}
-  else if(t==='p2j'){p2jFiles=[];document.getElementById('p2j-in').value='';document.getElementById('p2j-list').innerHTML='';H('p2j-cvt','p2j-ok','p2j-prog','p2j-err');}
+  else if(t==='p2j'){p2jFiles=[];document.getElementById('p2j-in').value='';document.getElementById('p2j-list').innerHTML='';H('p2j-cvt','p2j-ok','p2j-prog','j2p-err','p2j-set');}
   else if(t==='ic'){icFiles=[];document.getElementById('ic-in').value='';document.getElementById('ic-list').innerHTML='';H('ic-set','ic-cvt','ic-ok','ic-prog','ic-err');}
   else if(t==='ri'){riF=null;riBlob=null;document.getElementById('ri-in').value='';document.getElementById('ri-img').src='';H('ri-fi','ri-set','ri-cvt','ri-ok','ri-prog','ri-err','ri-prev');}
   else if(t==='mpdf'){mpdfFiles=[];document.getElementById('mpdf-in').value='';document.getElementById('mpdf-list').innerHTML='';mpdfBlob=null;H('mpdf-add','mpdf-cvt','mpdf-ok','mpdf-prog','mpdf-err');}
   else if(t==='spdf'){spdfF=null;spdfBlobs=[];document.getElementById('spdf-in').value='';H('spdf-fi','spdf-cvt','spdf-ok','spdf-prog','spdf-err');}
 }
 
-// WORD TO PDF
+// WORD TO PDF ENGINE
 let w2pF=null,w2pB=null;
 document.getElementById('w2p-in').addEventListener('change',e=>{if(e.target.files[0])w2pH(e.target.files[0]);});
 setupDrag('w2p-zone',f=>w2pH(f[0]));
-function w2pH(f){H('w2p-err','w2p-ok');if(!f.name.match(/\.(doc|docx)$/i)){S('w2p-err');return;}w2pF=f;w2pB=null;document.getElementById('w2p-fn').textContent=f.name;document.getElementById('w2p-fs').textContent=fz(f.size);S('w2p-fi','flex');S('w2p-cvt');gaEvent('file_selected','Word to PDF',f.name);}
-async function doW2P(){if(!w2pF)return;H('w2p-cvt');S('w2p-prog');document.getElementById('w2p-pt').textContent='Reading Word file...';ap('w2p-pf',0,40,400);try{const ab=await w2pF.arrayBuffer();ap('w2p-pf',40,70,400);document.getElementById('w2p-pt').textContent='Extracting content...';const res=await mammoth.extractRawText({arrayBuffer:ab});const text=res.value||'No content found.';ap('w2p-pf',70,95,400);document.getElementById('w2p-pt').textContent='Generating PDF...';const{jsPDF}=window.jspdf;const doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});const mg=20,pw=170,lh=7;let y=25;doc.setFont('helvetica','normal');doc.setFontSize(11);doc.setTextColor(30,30,30);text.split('\n').forEach(p=>{if(!p.trim()){y+=4;return;}doc.splitTextToSize(p.trim(),pw).forEach(l=>{if(y>272){doc.addPage();y=25;}doc.text(l,mg,y);y+=lh;});y+=3;});w2pB=doc.output('blob');ap('w2p-pf',95,100,200,()=>{H('w2p-prog');document.getElementById('w2p-msg').textContent='"'+w2pF.name.replace(/\.(doc|docx)$/i,'.pdf')+'" is ready!';S('w2p-ok');gaEvent('conversion_complete','Word to PDF',w2pF.name);});}catch(e){document.getElementById('w2p-pt').textContent='Error! Try again.';S('w2p-cvt');H('w2p-prog');}}
-function dlW2P(){if(!w2pB||!w2pF)return;dl(URL.createObjectURL(w2pB),w2pF.name.replace(/\.(doc|docx)$/i,'.pdf'));gaEvent('file_download','Word to PDF',w2pF.name);}
+function w2pH(f){H('w2p-err','w2p-ok');if(!f.name.match(/\.(doc|docx)$/i)){S('w2p-err');return;}w2pF=f;w2pB=null;document.getElementById('w2p-fn').textContent=f.name;document.getElementById('w2p-fs').textContent=fz(f.size);S('w2p-fi','flex');S('w2p-cvt');}
+async function doW2P(){if(!w2pF)return;H('w2p-cvt');S('w2p-prog');document.getElementById('w2p-pt').textContent='Reading Word file...';ap('w2p-pf',0,40,400);try{const ab=await w2pF.arrayBuffer();document.getElementById('w2p-pt').textContent='Converting content...';const res=await mammoth.extractRawText({arrayBuffer:ab});const text=res.value||'No text data parsed.';const{jsPDF}=window.jspdf;const doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});const mg=20,pw=170,lh=7;let y=25;doc.setFont('helvetica','normal');doc.setFontSize(11);text.split('\n').forEach(p=>{if(!p.trim()){y+=4;return;}doc.splitTextToSize(p.trim(),pw).forEach(l=>{if(y>272){doc.addPage();y=25;}doc.text(l,mg,y);y+=lh;});y+=3;});w2pB=doc.output('blob');ap('w2p-pf',40,100,300,()=>{H('w2p-prog');document.getElementById('w2p-msg').textContent='"'+w2pF.name.replace(/\.(doc|docx)$/i,'.pdf')+'" has been processed.';S('w2p-ok');});}catch(e){S('w2p-cvt');H('w2p-prog');}}
+function dlW2P(){if(w2pB&&w2pF)dl(URL.createObjectURL(w2pB),w2pF.name.replace(/\.(doc|docx)$/i,'.pdf'));}
 
-// PDF TO WORD
+// PDF TO WORD ENGINE
 let p2wF=null,p2wB=null;
 document.getElementById('p2w-in').addEventListener('change',e=>{if(e.target.files[0])p2wH(e.target.files[0]);});
 setupDrag('p2w-zone',f=>p2wH(f[0]));
-function p2wH(f){H('p2w-err','p2w-ok','p2w-note');if(!f.name.match(/\.pdf$/i)){S('p2w-err');return;}p2wF=f;p2wB=null;document.getElementById('p2w-fn').textContent=f.name;document.getElementById('p2w-fs').textContent=fz(f.size);S('p2w-fi','flex');S('p2w-cvt');gaEvent('file_selected','PDF to Word',f.name);}
-async function doP2W(){if(!p2wF)return;H('p2w-cvt');S('p2w-prog');document.getElementById('p2w-pt').textContent='Loading PDF...';ap('p2w-pf',0,20,400);try{const ab=await p2wF.arrayBuffer();const pdf=await pdfjsLib.getDocument({data:ab}).promise;const total=pdf.numPages;document.getElementById('p2w-pt').textContent='Extracting from '+total+' page(s)...';ap('p2w-pf',20,70,800);let txt='';for(let i=1;i<=total;i++){const pg=await pdf.getPage(i);const tc=await pg.getTextContent();txt+='--- Page '+i+' ---\n'+tc.items.map(x=>x.str).join(' ')+'\n\n';}document.getElementById('p2w-pt').textContent='Creating Word file...';ap('p2w-pf',70,95,400);const{Document,Packer,Paragraph,TextRun}=docx;const paras=txt.split('\n').map(l=>{if(l.startsWith('--- Page'))return new Paragraph({children:[new TextRun({text:l,bold:true,color:'888888',size:20})],spacing:{before:300,after:100}});return new Paragraph({children:[new TextRun({text:l,size:24})],spacing:{after:80}});});const d=new Document({sections:[{properties:{},children:paras}]});p2wB=await Packer.toBlob(d);ap('p2w-pf',95,100,200,()=>{H('p2w-prog');document.getElementById('p2w-msg').textContent='"'+p2wF.name.replace(/\.pdf$/i,'.docx')+'" is ready!';S('p2w-ok');S('p2w-note');gaEvent('conversion_complete','PDF to Word',p2wF.name);});}catch(e){document.getElementById('p2w-pt').textContent='Error! Try a valid PDF.';S('p2w-cvt');H('p2w-prog');}}
-function dlP2W(){if(!p2wB||!p2wF)return;dl(URL.createObjectURL(p2wB),p2wF.name.replace(/\.pdf$/i,'.docx'));gaEvent('file_download','PDF to Word',p2wF.name);}
+function p2wH(f){H('p2w-err','p2w-ok','p2w-note');if(!f.name.match(/\.pdf$/i)){S('p2w-err');return;}p2wF=f;p2wB=null;document.getElementById('p2w-fn').textContent=f.name;document.getElementById('p2w-fs').textContent=fz(f.size);S('p2w-fi','flex');S('p2w-cvt');}
+async function doP2W(){if(!p2wF)return;H('p2w-cvt');S('p2w-prog');try{const ab=await p2wF.arrayBuffer();const pdf=await pdfjsLib.getDocument({data:ab}).promise;const total=pdf.numPages;let txt='';for(let i=1;i<=total;i++){const pg=await pdf.getPage(i);const tc=await pg.getTextContent();txt+='--- Page '+i+' ---\n'+tc.items.map(x=>x.str).join(' ')+'\n\n';}const{Document,Packer,Paragraph,TextRun}=docx;const paras=txt.split('\n').map(l=>{return new Paragraph({children:[new TextRun({text:l,size:24})],spacing:{after:80}});});const d=new Document({sections:[{properties:{},children:paras}]});p2wB=await Packer.toBlob(d);H('p2w-prog');document.getElementById('p2w-msg').textContent='"'+p2wF.name.replace(/\.pdf$/i,'.docx')+'" is parsed.';S('p2w-ok');S('p2w-note');}catch(e){S('p2w-cvt');H('p2w-prog');}}
+function dlP2W(){if(p2wB&&p2wF)dl(URL.createObjectURL(p2wB),p2wF.name.replace(/\.pdf$/i,'.docx'));}
 
-// MERGE PDF
+// MERGE PDF ENGINE
 let mpdfFiles=[],mpdfBlob=null;
 document.getElementById('mpdf-in').addEventListener('change',e=>{if(e.target.files.length)mpdfAddFiles(e.target.files);});
 setupDrag('mpdf-zone',f=>mpdfAddFiles(f));
-function mpdfAddFiles(files){H('mpdf-err','mpdf-ok');Array.from(files).forEach(f=>{if(!f.name.match(/\.pdf$/i))return;mpdfFiles.push(f);const li=document.createElement('div');li.className='ml-item';li.innerHTML='<div class="ml-icon">&#128196;</div><div class="ml-info"><div class="ml-name">'+f.name+'</div><div class="ml-size">'+fz(f.size)+'</div></div>';document.getElementById('mpdf-list').appendChild(li);});if(mpdfFiles.length>=2){S('mpdf-cvt');S('mpdf-add');}else if(mpdfFiles.length===1){H('mpdf-cvt');S('mpdf-add');}document.getElementById('mpdf-in').value='';}
-async function doMPDF(){if(mpdfFiles.length<2){S('mpdf-err');return;}H('mpdf-cvt','mpdf-err');S('mpdf-prog');ap('mpdf-pf',0,30,400);try{const{PDFDocument}=PDFLib;const merged=await PDFDocument.create();for(let i=0;i<mpdfFiles.length;i++){const ab=await mpdfFiles[i].arrayBuffer();const pdf=await PDFDocument.load(ab);const pages=await merged.copyPages(pdf,pdf.getPageIndices());pages.forEach(p=>merged.addPage(p));}const bytes=await merged.save();mpdfBlob=new Blob([bytes],{type:'application/pdf'});H('mpdf-prog');document.getElementById('mpdf-msg').textContent=mpdfFiles.length+' PDFs merged successfully!';S('mpdf-ok');}catch(e){S('mpdf-cvt');H('mpdf-prog');}}
-function dlMPDF(){if(!mpdfBlob)return;dl(URL.createObjectURL(mpdfBlob),'merged.pdf');}
+function mpdfAddFiles(files){H('mpdf-err','mpdf-ok');Array.from(files).forEach(f=>{if(!f.name.match(/\.pdf$/i))return;mpdfFiles.push(f);const li=document.createElement('div');li.className='ml-item';li.innerHTML='<div class="ml-icon">📄</div><div class="ml-info"><div class="ml-name">'+f.name+'</div><div class="ml-size">'+fz(f.size)+'</div></div>';document.getElementById('mpdf-list').appendChild(li);});if(mpdfFiles.length>=2){S('mpdf-cvt');S('mpdf-add');}else{H('mpdf-cvt');S('mpdf-add');}document.getElementById('mpdf-in').value='';}
+async function doMPDF(){if(mpdfFiles.length<2){S('mpdf-err');return;}H('mpdf-cvt','mpdf-err');S('mpdf-prog');try{const{PDFDocument}=PDFLib;const merged=await PDFDocument.create();for(let i=0;i<mpdfFiles.length;i++){const ab=await mpdfFiles[i].arrayBuffer();const pdf=await PDFDocument.load(ab);const pages=await merged.copyPages(pdf,pdf.getPageIndices());pages.forEach(p=>merged.addPage(p));}const bytes=await merged.save();mpdfBlob=new Blob([bytes],{type:'application/pdf'});H('mpdf-prog');document.getElementById('mpdf-msg').textContent=mpdfFiles.length+' PDFs merged successfully!';S('mpdf-ok');}catch(e){S('mpdf-cvt');H('mpdf-prog');}}
+function dlMPDF(){if(mpdfBlob)dl(URL.createObjectURL(mpdfBlob),'merged.pdf');}
 
-// SPLIT PDF
+// SPLIT PDF ENGINE
 let spdfF=null,spdfBlobs=[];
 document.getElementById('spdf-in').addEventListener('change',e=>{if(e.target.files[0])spdfH(e.target.files[0]);});
 setupDrag('spdf-zone',f=>spdfH(f[0]));
 function spdfH(f){H('spdf-err','spdf-ok');if(!f.name.match(/\.pdf$/i)){S('spdf-err');return;}spdfF=f;spdfBlobs=[];document.getElementById('spdf-fn').textContent=f.name;document.getElementById('spdf-fs').textContent=fz(f.size);S('spdf-fi','flex');S('spdf-cvt');}
-async function doSPDF(){if(!spdfF)return;H('spdf-cvt');S('spdf-prog');try{const{PDFDocument}=PDFLib;const ab=await spdfF.arrayBuffer();const srcPdf=await PDFDocument.load(ab);const total=srcPdf.getPageCount();const dlList=document.getElementById('spdf-dllist');dlList.innerHTML='';for(let i=0;i<total;i++){const newPdf=await PDFDocument.create();const[page]=await newPdf.copyPages(srcPdf,[i]);newPdf.addPage(page);const bytes=await newPdf.save();const blob=new Blob([bytes],{type:'application/pdf'});spdfBlobs.push(blob);const name=spdfF.name.replace(/\.pdf$/i,'')+'_page'+(i+1)+'.pdf';const item=document.createElement('div');item.className='dl-item';item.innerHTML='<span class="dl-name">&#128196; '+name+'</span><button class="btn btn-blue" style="padding:6px 14px;font-size:12px;" onclick="dlSPDFPage('+i+',\''+name+'\')">&#8681; Download</button>';dlList.appendChild(item);}H('spdf-prog');S('spdf-ok');}catch(e){H('spdf-prog');S('spdf-cvt');}}
+async function doSPDF(){if(!spdfF)return;H('spdf-cvt');S('spdf-prog');try{const{PDFDocument}=PDFLib;const ab=await spdfF.arrayBuffer();const srcPdf=await PDFDocument.load(ab);const total=srcPdf.getPageCount();const dlList=document.getElementById('spdf-dllist');dlList.innerHTML='';for(let i=0;i<total;i++){const newPdf=await PDFDocument.create();const[page]=await newPdf.copyPages(srcPdf,[i]);newPdf.addPage(page);const bytes=await newPdf.save();const blob=new Blob([bytes],{type:'application/pdf'});spdfBlobs.push(blob);const name=spdfF.name.replace(/\.pdf$/i,'')+'_page'+(i+1)+'.pdf';const item=document.createElement('div');item.className='dl-item';item.innerHTML='<span class="dl-name">📄 '+name+'</span><button class="btn btn-blue" style="padding:6px 14px;font-size:12px;" onclick="dlSPDFPage('+i+',\''+name+'\')">Download</button>';dlList.appendChild(item);}H('spdf-prog');S('spdf-ok');}catch(e){H('spdf-prog');S('spdf-cvt');}}
 function dlSPDFPage(i,name){if(spdfBlobs[i])dl(URL.createObjectURL(spdfBlobs[i]),name);}
 
-// BULK JPG TO PNG UTILITY
+// BATCH JPG TO PNG UTILITY
 let j2pFiles=[];
 document.getElementById('j2p-in').addEventListener('change',e=>j2pHandleBatch(e.target.files));
 setupDrag('j2p-zone',f=>j2pHandleBatch(f));
-function j2pHandleBatch(files){H('j2p-err','j2p-ok');j2pFiles=Array.from(files).filter(f=>f.type.match(/image\/jpe?g/i));if(j2pFiles.length===0){S('j2p-err');return;}const list=document.getElementById('j2p-list');list.innerHTML='';j2pFiles.forEach(f=>{const row=document.createElement('div');row.className='ml-item';row.innerHTML=`<div class="ml-icon">🖼️</div><div class="ml-info"><div class="ml-name">${f.name}</div><div class="ml-size">${fz(f.size)}</div></div>`;list.appendChild(row});S('j2p-cvt');}
-async function doJ2PBulk(){H('j2p-cvt');S('j2p-prog');const dllist=document.getElementById('j2p-dllist');dllist.innerHTML='';for(let i=0;i<j2pFiles.length;i++){const file=j2pFiles[i];await new Promise(res=>{const reader=new FileReader();reader.onload=e=>{const img=new Image();img.onload=()=>{const c=document.getElementById('cv');c.width=img.width;c.height=img.height;c.getContext('2d').drawImage(img,0,0);c.toBlob(blob=>{const url=URL.createObjectURL(blob);const outName=file.name.replace(/\.jpe?g$/i,'.png');const row=document.createElement('div');row.className='dl-item';row.innerHTML=`<span class="dl-name">${outName} (${fz(blob.size)})</span><button class="btn btn-purple" style="padding:6px 12px; font-size:12px" onclick="dl('${url}','${outName}')">Download</button>`;dllist.appendChild(row);res();},'image/png');};img.src=e.target.result;};reader.readAsDataURL(file);});}H('j2p-prog');S('j2p-ok');}
+function j2pHandleBatch(files){H('j2p-err','j2p-ok');j2pFiles=Array.from(files).filter(f=>f.type.match(/image\/jpe?g/i));if(j2pFiles.length===0){S('j2p-err');return;}const list=document.getElementById('j2p-list');list.innerHTML='';j2pFiles.forEach(f=>{const row=document.createElement('div');row.className='ml-item';row.innerHTML=`<div class="ml-icon">🖼️</div><div class="ml-info"><div class="ml-name">${f.name}</div><div class="ml-size">${fz(f.size)}</div></div>`;list.appendChild(row);});S('j2p-cvt');}
+async function doJ2PBulk(){H('j2p-cvt');S('j2p-prog');const dllist=document.getElementById('j2p-dllist');dllist.innerHTML='';for(let i=0;i<j2pFiles.length;i++){const file=j2pFiles[i];await new Promise(res=>{const reader=new FileReader();reader.onload=e=>{const img=new Image();img.onload=()=>{const c=document.getElementById('cv');c.width=img.width;c.height=img.height;c.getContext('2d').drawImage(img,0,0);c.toBlob(blob=>{const url=URL.createObjectURL(blob);const outName=file.name.replace(/\.jpe?g$/i,'.png');const row=document.createElement('div');row.className='dl-item';row.innerHTML=`<span class="dl-name">${outName}</span><button class="btn btn-purple" style="padding:6px 12px; font-size:12px" onclick="dl('${url}','${outName}')">Download</button>`;dllist.appendChild(row);res();},'image/png');};img.src=e.target.result;};reader.readAsDataURL(file);});}H('j2p-prog');S('j2p-ok');}
 
-// BULK PNG TO JPG UTILITY
+// BATCH PNG TO JPG UTILITY
 let p2jFiles=[];
 document.getElementById('p2j-in').addEventListener('change',e=>p2jHandleBatch(e.target.files));
 setupDrag('p2j-zone',f=>p2jHandleBatch(f));
 function p2jHandleBatch(files){H('p2j-err','p2j-ok');p2jFiles=Array.from(files).filter(f=>f.type.match(/image\/png/i));if(p2jFiles.length===0){S('p2j-err');return;}const list=document.getElementById('p2j-list');list.innerHTML='';p2jFiles.forEach(f=>{const row=document.createElement('div');row.className='ml-item';row.innerHTML=`<div class="ml-icon">🖼️</div><div class="ml-info"><div class="ml-name">${f.name}</div><div class="ml-size">${fz(f.size)}</div></div>`;list.appendChild(row);});S('p2j-set');S('p2j-cvt');}
-async function doP2JBulk(){H('p2j-cvt','p2j-set');S('p2j-prog');const dllist=document.getElementById('p2j-dllist');dllist.innerHTML='';const q=parseInt(document.getElementById('p2j-sl').value)/100;for(let i=0;i<p2jFiles.length;i++){const file=p2jFiles[i];await new Promise(res=>{const reader=new FileReader();reader.onload=e=>{const img=new Image();img.onload=()=>{const c=document.getElementById('cv');c.width=img.width;c.height=img.height;const ctx=c.getContext('2d');ctx.fillStyle='#ffffff';ctx.fillRect(0,0,c.width,c.height);ctx.drawImage(img,0,0);c.toBlob(blob=>{const url=URL.createObjectURL(blob);const outName=file.name.replace(/\.png$/i,'.jpg');const row=document.createElement('div');row.className='dl-item';row.innerHTML=`<span class="dl-name">${outName} (${fz(blob.size)})</span><button class="btn btn-blue" style="padding:6px 12px; font-size:12px" onclick="dl('${url}','${outName}')">Download</button>`;dllist.appendChild(row);res();},'image/jpeg',q);};img.src=e.target.result;};reader.readAsDataURL(file);});}H('p2j-prog');S('p2j-ok');}
+async function doP2JBulk(){H('p2j-cvt','p2j-set');S('p2j-prog');const dllist=document.getElementById('p2j-dllist');dllist.innerHTML='';const q=parseInt(document.getElementById('p2j-sl').value)/100;for(let i=0;i<p2jFiles.length;i++){const file=p2jFiles[i];await new Promise(res=>{const reader=new FileReader();reader.onload=e=>{const img=new Image();img.onload=()=>{const c=document.getElementById('cv');c.width=img.width;c.height=img.height;const ctx=c.getContext('2d');ctx.fillStyle='#ffffff';ctx.fillRect(0,0,c.width,c.height);ctx.drawImage(img,0,0);c.toBlob(blob=>{const url=URL.createObjectURL(blob);const outName=file.name.replace(/\.png$/i,'.jpg');const row=document.createElement('div');row.className='dl-item';row.innerHTML=`<span class="dl-name">${outName}</span><button class="btn btn-blue" style="padding:6px 12px; font-size:12px" onclick="dl('${url}','${outName}')">Download</button>`;dllist.appendChild(row);res();},'image/jpeg',q);};img.src=e.target.result;};reader.readAsDataURL(file);});}H('p2j-prog');S('p2j-ok');}
 
-// RESIZE IMAGE
+// IMAGE RESIZE UTILITY
 let riF=null,riBlob=null,riOrigW=0,riOrigH=0;
 document.getElementById('ri-in').addEventListener('change',e=>{if(e.target.files[0])riH(e.target.files[0]);});
 setupDrag('ri-zone',f=>riH(f[0]));
@@ -544,8 +541,8 @@ function dlRI(){if(riBlob&&riF)dl(URL.createObjectURL(riBlob),riF.name.replace(/
 let icFiles=[];
 document.getElementById('ic-in').addEventListener('change',e=>icHandleBatch(e.target.files));
 setupDrag('ic-zone',f=>icHandleBatch(f));
-function icHandleBatch(files){H('ic-err','ic-ok');icFiles=Array.from(files).filter(f=>f.type.match(/image\/(jpeg|png|webp)/i));if(icFiles.length===0){S('ic-err');return;}const list=document.getElementById('ic-list');list.innerHTML='';icFiles.forEach(f=>{const row=document.createElement('div');row.className='ml-item';row.innerHTML=`<div class="ml-icon">📉</div><div class="ml-info"><div class="ml-name">${f.name}</div><div class="ml-size">Original: ${fz(f.size)}</div></div>`;list.appendChild(row);});S('ic-set');S('ic-cvt');}
-async function doICBulk(){H('ic-cvt','ic-set');S('ic-prog');const dllist=document.getElementById('ic-dllist');dllist.innerHTML='';const q=parseInt(document.getElementById('ic-sl').value)/100;for(let i=0;i<icFiles.length;i++){const file=icFiles[i];await new Promise(res=>{const reader=new FileReader();reader.onload=e=>{const img=new Image();img.onload=()=>{const c=document.getElementById('cv');c.width=img.width;c.height=img.height;c.getContext('2d').drawImage(img,0,0);c.toBlob(blob=>{const url=URL.createObjectURL(blob);const outName=file.name.replace(/\.\w+$/,'_compressed.jpg');const savedPct=Math.max(0,Math.round((1-blob.size/file.size)*100));const row=document.createElement('div');row.className='dl-item';row.innerHTML=`<span class="dl-name">${outName} (${fz(blob.size)}) <b style="color:#22c55e">-${savedPct}%</b></span><button class="btn btn-green" style="padding:6px 12px; font-size:12px" onclick="dl('${url}','${outName}')">Download</button>`;dllist.appendChild(row);res();},'image/jpeg',q);};img.src=e.target.result;};reader.readAsDataURL(file);});}H('ic-prog');S('ic-ok');}
+function icHandleBatch(files){H('ic-err','ic-ok');icFiles=Array.from(files).filter(f=>f.type.match(/image\/(jpeg|png|webp)/i));if(icFiles.length===0){S('ic-err');return;}const list=document.getElementById('ic-list');list.innerHTML='';icFiles.forEach(f=>{const row=document.createElement('div');row.className='ml-item';row.innerHTML=`<div class="ml-icon">📉</div><div class="ml-info"><div class="ml-name">${f.name}</div><div class="ml-size">Size: ${fz(f.size)}</div></div>`;list.appendChild(row);});S('ic-set');S('ic-cvt');}
+async function doICBulk(){H('ic-cvt','ic-set');S('ic-prog');const dllist=document.getElementById('ic-dllist');dllist.innerHTML='';const q=parseInt(document.getElementById('ic-sl').value)/100;for(let i=0;i<icFiles.length;i++){const file=icFiles[i];await new Promise(res=>{const reader=new FileReader();reader.onload=e=>{const img=new Image();img.onload=()=>{const c=document.getElementById('cv');c.width=img.width;c.height=img.height;c.getContext('2d').drawImage(img,0,0);c.toBlob(blob=>{const url=URL.createObjectURL(blob);const outName=file.name.replace(/\.\w+$/,'_compressed.jpg');const savedPct=Math.max(0,Math.round((1-blob.size/file.size)*100));const row=document.createElement('div');row.className='dl-item';row.innerHTML=`<span class="dl-name">${outName} <b style="color:#22c55e">-${savedPct}% Saved</b></span><button class="btn btn-green" style="padding:6px 12px; font-size:12px" onclick="dl('${url}','${outName}')">Download</button>`;dllist.appendChild(row);res();},'image/jpeg',q);};img.src=e.target.result;};reader.readAsDataURL(file);});}H('ic-prog');S('ic-ok');}
 </script>
 </body>
 </html>
