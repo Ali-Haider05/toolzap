@@ -6,9 +6,11 @@
 
 <title>ToolZap - Free Online File Tools | Word to PDF & Image Compressor</title>
 <meta name="description" content="ToolZap offers fast, free, and 100% private online file tools. Convert Word to PDF, extract PDF text, merge or split PDFs, and compress or resize images instantly in your browser without any signup."/>
-<meta name="keywords" content="ToolZap, free online file tools, word to pdf, pdf to word, merge pdf, split pdf, image compressor, jpg to png, png to jpg, resize image, browser based tools, privacy first conversion, no signup file tools"/>
+<meta name="keywords" content="ToolZap, free online file tools, word to pdf, pdf to word, merge pdf, split pdf, image compressor, jpg to png, png to jpg, resize image, bulk image compress, browser based tools, privacy first conversion, no signup file tools, Ali Haider dev"/>
 <meta name="author" content="Ali Haider"/>
 <meta name="robots" content="index, follow"/>
+
+<link rel="icon" type="image/x-icon" href="https://alihaiderdev.me/toolzap/favicon.ico">
 
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://alihaiderdev.me/toolzap/"/>
@@ -27,6 +29,35 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-PC4TDXJD1N');
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "Is ToolZap free and safe to use?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes, ToolZap is 100% free and completely safe. All file processing happens locally in your browser using client-side JavaScript, meaning your files are never uploaded to any server."
+    }
+  }, {
+    "@type": "Question",
+    "name": "Can I compress multiple images at once on ToolZap?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes! ToolZap supports bulk uploading and processing for image files. You can select and compress or convert multiple photos at the same time instantly."
+    }
+  }, {
+    "@type": "Question",
+    "name": "Do I need an account or registration to use Word to PDF?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No signup or account registration is required. All tools are unlocked and always ready for instant use."
+    }
+  }]
+}
 </script>
 
 <style>
@@ -166,8 +197,31 @@ body{background:#0f1117;color:#fff;font-family:'Segoe UI',sans-serif;min-height:
 .dl-list{display:flex;flex-direction:column;gap:8px;margin-top:12px;}
 .dl-item{background:#1e2130;border:1px solid #ffffff10;border-radius:10px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
 .dl-item .dl-name{font-size:13px;color:#aaa;}
-.footer{text-align:center;padding:28px;color:#333;font-size:12px;border-top:1px solid #ffffff08;margin-top:24px;}
-.footer span{color:#f59e0b;}
+
+/* 🛠️ Naye FAQ, Feedback aur Footer Sections ka Style */
+.faq-section{padding:50px 32px;max-width:850px;margin:30px auto 0;border-top:1px solid #ffffff08;}
+.faq-title{font-size:24px;font-weight:800;text-align:center;margin-bottom:24px;}
+.faq-title span{color:#f59e0b;}
+.faq-item{background:#1e2130;border:1px solid #ffffff10;border-radius:10px;margin-bottom:12px;overflow:hidden;}
+.faq-q{padding:18px 22px;font-size:15px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background 0.2s;}
+.faq-q:hover{background:#252840;}
+.faq-q::after{content:'+';font-size:18px;color:#f59e0b;transition:transform 0.2s;}
+.faq-item.open .faq-q::after{content:'-';transform:rotate(180deg);}
+.faq-a{padding:0 22px;max-height:0;overflow:hidden;transition:all 0.3s ease-out;color:#aaa;font-size:14px;line-height:1.6;}
+.faq-item.open .faq-a{padding:4px 22px 18px;max-height:150px;}
+
+.feedback-section{padding:40px 24px;max-width:550px;margin:20px auto;background:#141722;border:1px solid #f59e0b22;border-radius:16px;text-align:center;}
+.feedback-section h3{font-size:18px;margin-bottom:6px;font-weight:700;}
+.feedback-section h3 span{color:#f59e0b;}
+.feedback-section p{font-size:13px;color:#777;margin-bottom:16px;}
+.feedback-box{width:100%;background:#0f1117;border:1px solid #ffffff15;border-radius:10px;padding:12px;color:#fff;font-family:inherit;font-size:14px;min-height:90px;resize:none;outline:none;margin-bottom:12px;}
+.feedback-box:focus{border-color:#f59e0b;}
+
+.footer{text-align:center;padding:32px 24px;color:#555;font-size:13px;border-top:1px solid #ffffff08;margin-top:40px;background:#0a0c10;}
+.footer span{color:#f59e0b;font-weight:600;}
+.footer a{color:#666;text-decoration:none;transition:color 0.2s;}
+.footer a:hover{color:#f59e0b;}
+
 canvas{display:none;}
 </style>
 </head>
@@ -203,6 +257,7 @@ canvas{display:none;}
       <div class="stat"><div class="stat-num">&#128274;</div><div class="stat-label">Files Private</div></div>
     </div>
   </div>
+  
   <div class="section" id="pdf-sec">
     <div class="section-header"><span class="section-icon">&#128196;</span><span class="section-title">PDF Tools</span></div>
     <div class="tools-grid">
@@ -212,17 +267,45 @@ canvas{display:none;}
       <div class="tool-card" onclick="showTool('spdf')"><span class="tbadge bn">New</span><div class="tool-icon">&#9986;</div><div class="tool-name">Split PDF</div><div class="tool-desc">Split PDF into separate pages</div></div>
     </div>
   </div>
+  
   <div class="divider"></div>
+  
   <div class="section" id="img-sec">
-    <div class="section-header"><span class="section-icon">&#128444;</span><span class="section-title">Image Tools</span></div>
+    <div class="section-header"><span class="section-icon">&#128444;</span><span class="section-title">Image Tools (Bulk Update)</span></div>
     <div class="tools-grid">
-      <div class="tool-card" onclick="showTool('ic')"><span class="tbadge bp">Popular</span><div class="tool-icon">&#128190;</div><div class="tool-name">Image Compressor</div><div class="tool-desc">Reduce image size without losing quality</div></div>
-      <div class="tool-card" onclick="showTool('j2p')"><span class="tbadge bp">Popular</span><div class="tool-icon">&#128247;</div><div class="tool-name">JPG to PNG</div><div class="tool-desc">Convert JPG images to PNG format</div></div>
-      <div class="tool-card" onclick="showTool('p2j')"><span class="tbadge bn">New</span><div class="tool-icon">&#128247;</div><div class="tool-name">PNG to JPG</div><div class="tool-desc">Convert PNG images to JPG format</div></div>
+      <div class="tool-card" onclick="showTool('ic')"><span class="tbadge bp">Popular</span><div class="tool-icon">&#128190;</div><div class="tool-name">Image Compressor</div><div class="tool-desc">Compress multiple images without losing quality</div></div>
+      <div class="tool-card" onclick="showTool('j2p')"><span class="tbadge bp">Popular</span><div class="tool-icon">&#128247;</div><div class="tool-name">JPG to PNG</div><div class="tool-desc">Convert bulk JPG images to PNG format</div></div>
+      <div class="tool-card" onclick="showTool('p2j')"><span class="tbadge bn">New</span><div class="tool-icon">&#128247;</div><div class="tool-name">PNG to JPG</div><div class="tool-desc">Convert bulk PNG images to JPG format</div></div>
       <div class="tool-card" onclick="showTool('ri')"><span class="tbadge bn">New</span><div class="tool-icon">&#128256;</div><div class="tool-name">Resize Image</div><div class="tool-desc">Change image dimensions easily</div></div>
     </div>
   </div>
-  <div class="footer">Made with &#10084; in Pakistan &mdash; <span>ToolZap</span> &copy; 2026 &mdash; Always free</div>
+
+  <div class="faq-section">
+    <h2 class="faq-title">Frequently Asked <span>Questions</span></h2>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Is ToolZap completely free and private?</div>
+      <div class="faq-a">Yes! ToolZap is 100% free with no hidden charges or signups. Since it runs entirely inside your browser (client-side), your files never get uploaded to any server. Your data stays completely secure on your device.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Does ToolZap support bulk image conversion?</div>
+      <div class="faq-a">Yes! Our updated Image Compressor, JPG to PNG, and PNG to JPG tools support processing multiple files simultaneously. You can select a batch of files and handle them instantly.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Why should I use browser-based tools?</div>
+      <div class="faq-a">Browser-based file conversion is instant because it cuts out server upload and download wait times. Additionally, it offers maximum security because your sensitive files never leave your system.</div>
+    </div>
+  </div>
+
+  <div class="feedback-section">
+    <h3>Have a <span>Feedback</span> or Request a Tool?</h3>
+    <p>Your suggestions help improve ToolZap. Share your thoughts or tool suggestions below!</p>
+    <textarea class="feedback-box" id="fb-text" placeholder="Write your feedback, bug report, or new tool suggestions here..."></textarea>
+    <button class="btn btn-gold" onclick="sendFeedback()">🚀 Send Feedback</button>
+  </div>
+
+  <div class="footer">
+    Designed &amp; Developed with &#10084; in Pakistan by <span><a href="https://github.com/Ali-Haider05" target="_blank">Ali Haider</a></span> &mdash; ToolZap &copy; 2026 &mdash; Always Free &amp; Open Source
+  </div>
 </div>
 
 <div class="page" id="w2pPage">
@@ -290,33 +373,29 @@ canvas{display:none;}
 <div class="page" id="j2pPage">
   <div class="tool-page">
     <button class="tool-back" onclick="showHome()">&#8592; Back to Tools</button>
-    <div class="tool-header"><h2>JPG to <span>PNG</span></h2><p>Convert JPG/JPEG images to PNG format</p><div class="badge-row"><span class="sbadge">&#128274; No server upload</span><span class="sbadge">&#9889; Instant</span><span class="sbadge">&#10004; Free</span></div></div>
-    <div class="upload-zone" id="j2p-zone" onclick="document.getElementById('j2p-in').click()"><div class="uz-icon">&#128247;</div><h3>Drop your JPG here</h3><p>Supports .jpg and .jpeg</p><button class="btn btn-gold" onclick="event.stopPropagation();document.getElementById('j2p-in').click()">&#8679; Choose Image</button></div>
-    <input type="file" id="j2p-in" accept=".jpg,.jpeg,image/jpeg" style="display:none"/>
-    <div class="file-info" id="j2p-fi"><div class="fi-icon">&#128247;</div><div class="fi-details"><div class="fi-name" id="j2p-fn"></div><div class="fi-size" id="j2p-fs"></div></div><button class="rm-btn" onclick="rst('j2p')">&#10005;</button></div>
-    <div id="j2p-prev" style="display:none;margin-top:12px;"><img id="j2p-img" style="width:100%;max-height:220px;object-fit:contain;border-radius:10px;background:#1e2130;" src="" alt="Preview"/></div>
+    <div class="tool-header"><h2>JPG to <span>PNG</span> (Bulk)</h2><p>Convert multiple JPG/JPEG images to PNG format instantly</p><div class="badge-row"><span class="sbadge">&#128274; No server upload</span><span class="sbadge">&#9889; Batch Support</span><span class="sbadge">&#10004; Free</span></div></div>
+    <div class="upload-zone" id="j2p-zone" onclick="document.getElementById('j2p-in').click()"><div class="uz-icon">&#128247;</div><h3>Drop your JPG images here</h3><p>Supports multiple .jpg and .jpeg files</p><button class="btn btn-gold" onclick="event.stopPropagation();document.getElementById('j2p-in').click()">&#8679; Choose Images</button></div>
+    <input type="file" id="j2p-in" accept=".jpg,.jpeg,image/jpeg" multiple style="display:none"/>
+    <div class="multi-list" id="j2p-list"></div>
     <div class="err-box" id="j2p-err">&#9888; Only .jpg and .jpeg files are supported!</div>
-    <div class="cvt-wrap" id="j2p-cvt"><button class="btn btn-gold btn-full" onclick="doJ2P()">&#128247; Convert to PNG</button></div>
+    <div class="cvt-wrap" id="j2p-cvt"><button class="btn btn-gold btn-full" onclick="doJ2PBulk()">&#128247; Convert All to PNG</button></div>
     <div class="prog-wrap" id="j2p-prog"><div class="prog-bar"><div class="prog-fill pf-purple" id="j2p-pf"></div></div><div class="prog-txt" id="j2p-pt">Converting...</div></div>
-    <div class="success-box sb-purple" id="j2p-ok"><div class="si">&#9989;</div><h3>PNG Ready!</h3><p id="j2p-msg"></p><div class="sb-btns"><button class="btn btn-purple" onclick="dlJ2P()">&#8681; Download PNG</button><button class="btn btn-outline" onclick="rst('j2p')">&#8635; Convert Another</button></div></div>
-    <div class="tips"><h4>Why PNG?</h4><div class="tip"><span class="tip-ic">&#128247;</span>PNG supports transparent backgrounds</div><div class="tip"><span class="tip-ic">&#127775;</span>Lossless — better quality</div><div class="tip"><span class="tip-ic">&#128274;</span>Files never leave your device</div></div>
+    <div class="success-box sb-purple" id="j2p-ok"><div class="si">&#9989;</div><h3>Conversion Complete!</h3><p>All files processed successfully.</p><div class="dl-list" id="j2p-dllist"></div><div class="sb-btns" style="margin-top:14px;"><button class="btn btn-outline" onclick="rst('j2p')">&#8635; Convert More</button></div></div>
   </div>
 </div>
 
 <div class="page" id="p2jPage">
   <div class="tool-page">
     <button class="tool-back" onclick="showHome()">&#8592; Back to Tools</button>
-    <div class="tool-header"><h2>PNG to <span>JPG</span></h2><p>Convert PNG images to JPG format</p><div class="badge-row"><span class="sbadge">&#128274; No server upload</span><span class="sbadge">&#9889; Instant</span><span class="sbadge">&#10004; Free</span></div></div>
-    <div class="upload-zone" id="p2j-zone" onclick="document.getElementById('p2j-in').click()"><div class="uz-icon">&#128247;</div><h3>Drop your PNG here</h3><p>Supports .png files</p><button class="btn btn-gold" onclick="event.stopPropagation();document.getElementById('p2j-in').click()">&#8679; Choose Image</button></div>
-    <input type="file" id="p2j-in" accept=".png,image/png" style="display:none"/>
-    <div class="file-info" id="p2j-fi"><div class="fi-icon">&#128247;</div><div class="fi-details"><div class="fi-name" id="p2j-fn"></div><div class="fi-size" id="p2j-fs"></div></div><button class="rm-btn" onclick="rst('p2j')">&#10005;</button></div>
-    <div id="p2j-prev" style="display:none;margin-top:12px;"><img id="p2j-img" style="width:100%;max-height:220px;object-fit:contain;border-radius:10px;background:#1e2130;" src="" alt="Preview"/></div>
+    <div class="tool-header"><h2>PNG to <span>JPG</span> (Bulk)</h2><p>Convert multiple PNG images to JPG format</p><div class="badge-row"><span class="sbadge">&#128274; No server upload</span><span class="sbadge">&#9889; Batch Support</span></div></div>
+    <div class="upload-zone" id="p2j-zone" onclick="document.getElementById('p2j-in').click()"><div class="uz-icon">&#128247;</div><h3>Drop your PNG images here</h3><p>Supports multiple .png files</p><button class="btn btn-gold" onclick="event.stopPropagation();document.getElementById('p2j-in').click()">&#8679; Choose Images</button></div>
+    <input type="file" id="p2j-in" accept=".png,image/png" multiple style="display:none"/>
+    <div class="multi-list" id="p2j-list"></div>
+    <div class="settings-box" id="p2j-set"><h4>&#9881; JPG Quality Setting</h4><div class="q-row"><label>Quality</label><input type="range" id="p2j-sl" min="10" max="100" value="90" oninput="document.getElementById('p2j-qv').textContent=this.value+'%'"/>  <span class="q-val" id="p2j-qv">90%</span></div></div>
     <div class="err-box" id="p2j-err">&#9888; Only .png files are supported!</div>
-    <div class="settings-box" id="p2j-set"><h4>&#9881; JPG Quality</h4><div class="q-row"><label>Quality</label><input type="range" id="p2j-sl" min="10" max="100" value="90" oninput="document.getElementById('p2j-qv').textContent=this.value+'%'"/>  <span class="q-val" id="p2j-qv">90%</span></div><div class="q-labels"><span>Smaller file</span><span>Better quality</span></div></div>
-    <div class="cvt-wrap" id="p2j-cvt"><button class="btn btn-gold btn-full" onclick="doP2J()">&#128247; Convert to JPG</button></div>
+    <div class="cvt-wrap" id="p2j-cvt"><button class="btn btn-gold btn-full" onclick="doP2JBulk()">&#128247; Convert All to JPG</button></div>
     <div class="prog-wrap" id="p2j-prog"><div class="prog-bar"><div class="prog-fill pf-blue" id="p2j-pf"></div></div><div class="prog-txt" id="p2j-pt">Converting...</div></div>
-    <div class="success-box sb-blue" id="p2j-ok"><div class="si">&#9989;</div><h3>JPG Ready!</h3><p id="p2j-msg"></p><div class="sb-btns"><button class="btn btn-blue" onclick="dlP2J()">&#8681; Download JPG</button><button class="btn btn-outline" onclick="rst('p2j')">&#8635; Convert Another</button></div></div>
-    <div class="tips"><h4>Why JPG?</h4><div class="tip"><span class="tip-ic">&#128247;</span>Smaller file size than PNG</div><div class="tip"><span class="tip-ic">&#127775;</span>Great for photos and sharing</div><div class="tip"><span class="tip-ic">&#128274;</span>Files never leave your device</div></div>
+    <div class="success-box sb-blue" id="p2j-ok"><div class="si">&#9989;</div><h3>Conversion Complete!</h3><p>All your images are ready.</p><div class="dl-list" id="p2j-dllist"></div><div class="sb-btns" style="margin-top:14px;"><button class="btn btn-outline" onclick="rst('p2j')">&#8635; Convert More</button></div></div>
   </div>
 </div>
 
@@ -341,27 +420,21 @@ canvas{display:none;}
     <div class="cvt-wrap" id="ri-cvt"><button class="btn btn-gold btn-full" onclick="doRI()">&#128256; Resize Image</button></div>
     <div class="prog-wrap" id="ri-prog"><div class="prog-bar"><div class="prog-fill pf-green" id="ri-pf"></div></div><div class="prog-txt" id="ri-pt">Resizing...</div></div>
     <div class="success-box sb-green" id="ri-ok"><div class="si">&#9989;</div><h3>Resized!</h3><p id="ri-msg"></p><div class="sb-btns"><button class="btn btn-green" onclick="dlRI()">&#8681; Download Image</button><button class="btn btn-outline" onclick="rst('ri')">&#8635; Resize Another</button></div></div>
-    <div class="tips"><h4>Tips</h4><div class="tip"><span class="tip-ic">&#128247;</span>Leave one field empty to auto-scale</div><div class="tip"><span class="tip-ic">&#127775;</span>Output is JPG format</div><div class="tip"><span class="tip-ic">&#128274;</span>Files never leave your device</div></div>
   </div>
 </div>
 
 <div class="page" id="icPage">
   <div class="tool-page">
     <button class="tool-back" onclick="showHome()">&#8592; Back to Tools</button>
-    <div class="tool-header"><h2>Image <span>Compressor</span></h2><p>Reduce image size without losing quality</p><div class="badge-row"><span class="sbadge">&#128274; No server upload</span><span class="sbadge">&#9889; Instant</span><span class="sbadge">&#10004; Free</span></div></div>
-    <div class="upload-zone" id="ic-zone" onclick="document.getElementById('ic-in').click()"><div class="uz-icon">&#128444;</div><h3>Drop your image here</h3><p>Supports JPG, PNG, WebP</p><button class="btn btn-gold" onclick="event.stopPropagation();document.getElementById('ic-in').click()">&#8679; Choose Image</button></div>
-    <input type="file" id="ic-in" accept="image/jpeg,image/png,image/webp" style="display:none"/>
-    <div class="file-info" id="ic-fi"><div class="fi-icon">&#128444;</div><div class="fi-details"><div class="fi-name" id="ic-fn"></div><div class="fi-size" id="ic-fs"></div></div><button class="rm-btn" onclick="rst('ic')">&#10005;</button></div>
-    <div class="err-box" id="ic-err">&#9888; Only JPG, PNG, WebP images are supported!</div>
-    <div class="settings-box" id="ic-set"><h4>&#9881; Compression Quality</h4><div class="q-row"><label>Quality</label><input type="range" id="ic-sl" min="10" max="95" value="70" oninput="icQ(this.value)"/>  <span class="q-val" id="ic-qv">70%</span></div><div class="q-labels"><span>Smaller file</span><span>Better quality</span></div></div>
-    <div class="prev-grid" id="ic-pg" style="display:none;">
-      <div class="prev-card"><h5>&#128247; Original</h5><img id="ic-oi" src="" alt="Original Image File"/><div class="psz">Size: <span id="ic-os">—</span></div></div>
-      <div class="prev-card"><h5>&#9989; Compressed</h5><img id="ic-ci" src="" alt="Compressed Image File"/><div class="psz">Size: <span id="ic-cs">—</span></div><div class="saving-badge" id="ic-sv" style="display:none;"></div></div>
-    </div>
-    <div class="cvt-wrap" id="ic-cvt"><button class="btn btn-gold btn-full" onclick="doIC()">&#9889; Compress Image</button></div>
-    <div class="prog-wrap" id="ic-prog"><div class="prog-bar"><div class="prog-fill pf-green" id="ic-pf"></div></div><div class="prog-txt" id="ic-pt">Compressing...</div></div>
-    <div class="success-box sb-green" id="ic-ok"><div class="si">&#127775;</div><h3>Done!</h3><p id="ic-msg"></p><div class="stat-items"><div class="stat-item"><div class="sv" id="ic-sto">—</div><div class="sl">Original</div></div><div class="stat-item"><div class="sv" id="ic-stc">—</div><div class="sl">Compressed</div></div><div class="stat-item"><div class="sv" id="ic-sts">—</div><div class="sl">Saved</div></div></div><div class="sb-btns"><button class="btn btn-green" onclick="dlIC()">&#8681; Download Image</button><button class="btn btn-outline" onclick="rst('ic')">&#8635; Compress Another</button></div></div>
-    <div class="tips"><h4>Tips</h4><div class="tip"><span class="tip-ic">&#127919;</span>70% quality = best balance</div><div class="tip"><span class="tip-ic">&#128247;</span>Great for website images</div><div class="tip"><span class="tip-ic">&#128274;</span>Files never leave your device</div></div>
+    <div class="tool-header"><h2>Image <span>Compressor</span> (Bulk)</h2><p>Reduce multiple image sizes cleanly at once</p><div class="badge-row"><span class="sbadge">&#128274; Local Optimization</span><span class="sbadge">&#9889; High Speed</span></div></div>
+    <div class="upload-zone" id="ic-zone" onclick="document.getElementById('ic-in').click()"><div class="uz-icon">&#128444;</div><h3>Drop images here</h3><p>Supports multiple JPG, PNG, WebP files</p><button class="btn btn-gold" onclick="event.stopPropagation();document.getElementById('ic-in').click()">&#8679; Choose Images</button></div>
+    <input type="file" id="ic-in" accept="image/jpeg,image/png,image/webp" multiple style="display:none"/>
+    <div class="multi-list" id="ic-list"></div>
+    <div class="settings-box" id="ic-set"><h4>&#9881; Target Quality Strategy</h4><div class="q-row"><label>Quality</label><input type="range" id="ic-sl" min="10" max="95" value="70" oninput="document.getElementById('ic-qv').textContent=this.value+'%'"/>  <span class="q-val" id="ic-qv">70%</span></div></div>
+    <div class="err-box" id="ic-err">&#9888; Unsupported format discovered!</div>
+    <div class="cvt-wrap" id="ic-cvt"><button class="btn btn-gold btn-full" onclick="doICBulk()">&#9889; Compress All Images</button></div>
+    <div class="prog-wrap" id="ic-prog"><div class="prog-bar"><div class="prog-fill pf-green" id="ic-pf"></div></div><div class="prog-txt" id="ic-pt">Processing Batch...</div></div>
+    <div class="success-box sb-green" id="ic-ok"><div class="si">&#127775;</div><h3>Batch Compression Done!</h3><div class="dl-list" id="ic-dllist"></div><div class="sb-btns" style="margin-top:14px;"><button class="btn btn-outline" onclick="rst('ic')">&#8635; Compress More</button></div></div>
   </div>
 </div>
 
@@ -375,6 +448,21 @@ canvas{display:none;}
 <script>
 pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
+// Interactive UI Actions
+function toggleFaq(el) {
+  el.parentElement.classList.toggle('open');
+}
+
+function sendFeedback() {
+  const text = document.getElementById('fb-text').value.trim();
+  if(!text) { alert('Please enter some feedback first!'); return; }
+  const subject = encodeURIComponent('ToolZap User Feedback');
+  const body = encodeURIComponent(text);
+  window.open(`mailto:alihaiderdev05@gmail.com?subject=${subject}&body=${body}`);
+  document.getElementById('fb-text').value = '';
+  alert('Thank you! Your email client has been opened to submit your feedback.');
+}
+
 function gaEvent(action,category,label){if(typeof gtag!=='undefined'){gtag('event',action,{event_category:category,event_label:label});}}
 function showHome(){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById('homePage').classList.add('active');window.scrollTo(0,0);}
 function showTool(n){const m={w2p:'w2pPage',p2w:'p2wPage',j2p:'j2pPage',ic:'icPage',mpdf:'mpdfPage',spdf:'spdfPage',p2j:'p2jPage',ri:'riPage'};const names={w2p:'Word to PDF',p2w:'PDF to Word',j2p:'JPG to PNG',ic:'Image Compressor',mpdf:'Merge PDF',spdf:'Split PDF',p2j:'PNG to JPG',ri:'Resize Image'};document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(m[n]).classList.add('active');window.scrollTo(0,0);gaEvent('tool_open','Tools',names[n]);}
@@ -385,14 +473,14 @@ function S(id,d='block'){const e=document.getElementById(id);if(e)e.style.displa
 function fz(b){if(b<1024)return b+' B';if(b<1048576)return(b/1024).toFixed(1)+' KB';return(b/1048576).toFixed(2)+' MB';}
 function ap(id,a,b,dur,cb){const el=document.getElementById(id);const s=performance.now();function st(n){const p=Math.min((n-s)/dur,1);el.style.width=(a+(b-a)*p)+'%';if(p<1)requestAnimationFrame(st);else if(cb)cb();}requestAnimationFrame(st);}
 function dl(url,name){const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();document.body.removeChild(a);if(url.startsWith('blob'))setTimeout(()=>URL.revokeObjectURL(url),1000);}
-function setupDrag(zoneId,cb){const z=document.getElementById(zoneId);z.addEventListener('dragover',e=>{e.preventDefault();z.classList.add('drag');});z.addEventListener('dragleave',()=>z.classList.remove('drag'));z.addEventListener('drop',e=>{e.preventDefault();z.classList.remove('drag');if(e.dataTransfer.files[0])cb(e.dataTransfer.files[0]);});}
+function setupDrag(zoneId,cb){const z=document.getElementById(zoneId);z.addEventListener('dragover',e=>{e.preventDefault();z.classList.add('drag');});z.addEventListener('dragleave',()=>z.classList.remove('drag'));z.addEventListener('drop',e=>{e.preventDefault();z.classList.remove('drag');if(e.dataTransfer.files.length)cb(e.dataTransfer.files);});}
 
 function rst(t){
   if(t==='w2p'){w2pF=null;w2pB=null;document.getElementById('w2p-in').value='';H('w2p-fi','w2p-cvt','w2p-ok','w2p-prog','w2p-err');}
   else if(t==='p2w'){p2wF=null;p2wB=null;document.getElementById('p2w-in').value='';H('p2w-fi','p2w-cvt','p2w-ok','p2w-prog','p2w-err','p2w-note');}
-  else if(t==='j2p'){j2pF=null;j2pBlob=null;document.getElementById('j2p-in').value='';document.getElementById('j2p-img').src='';H('j2p-fi','j2p-cvt','j2p-ok','j2p-prog','j2p-err','j2p-prev');}
-  else if(t==='p2j'){p2jF=null;p2jBlob=null;document.getElementById('p2j-in').value='';document.getElementById('p2j-img').src='';H('p2j-fi','p2j-cvt','p2j-ok','p2j-prog','p2j-err','p2j-prev','p2j-set');}
-  else if(t==='ic'){icF=null;icBlob=null;icOB=0;document.getElementById('ic-in').value='';H('ic-fi','ic-set','ic-pg','ic-cvt','ic-ok','ic-prog','ic-err');}
+  else if(t==='j2p'){j2pFiles=[];document.getElementById('j2p-in').value='';document.getElementById('j2p-list').innerHTML='';H('j2p-cvt','j2p-ok','j2p-prog','j2p-err');}
+  else if(t==='p2j'){p2jFiles=[];document.getElementById('p2j-in').value='';document.getElementById('p2j-list').innerHTML='';H('p2j-cvt','p2j-ok','p2j-prog','p2j-err');}
+  else if(t==='ic'){icFiles=[];document.getElementById('ic-in').value='';document.getElementById('ic-list').innerHTML='';H('ic-set','ic-cvt','ic-ok','ic-prog','ic-err');}
   else if(t==='ri'){riF=null;riBlob=null;document.getElementById('ri-in').value='';document.getElementById('ri-img').src='';H('ri-fi','ri-set','ri-cvt','ri-ok','ri-prog','ri-err','ri-prev');}
   else if(t==='mpdf'){mpdfFiles=[];document.getElementById('mpdf-in').value='';document.getElementById('mpdf-list').innerHTML='';mpdfBlob=null;H('mpdf-add','mpdf-cvt','mpdf-ok','mpdf-prog','mpdf-err');}
   else if(t==='spdf'){spdfF=null;spdfBlobs=[];document.getElementById('spdf-in').value='';H('spdf-fi','spdf-cvt','spdf-ok','spdf-prog','spdf-err');}
@@ -401,7 +489,7 @@ function rst(t){
 // WORD TO PDF
 let w2pF=null,w2pB=null;
 document.getElementById('w2p-in').addEventListener('change',e=>{if(e.target.files[0])w2pH(e.target.files[0]);});
-setupDrag('w2p-zone',f=>w2pH(f));
+setupDrag('w2p-zone',f=>w2pH(f[0]));
 function w2pH(f){H('w2p-err','w2p-ok');if(!f.name.match(/\.(doc|docx)$/i)){S('w2p-err');return;}w2pF=f;w2pB=null;document.getElementById('w2p-fn').textContent=f.name;document.getElementById('w2p-fs').textContent=fz(f.size);S('w2p-fi','flex');S('w2p-cvt');gaEvent('file_selected','Word to PDF',f.name);}
 async function doW2P(){if(!w2pF)return;H('w2p-cvt');S('w2p-prog');document.getElementById('w2p-pt').textContent='Reading Word file...';ap('w2p-pf',0,40,400);try{const ab=await w2pF.arrayBuffer();ap('w2p-pf',40,70,400);document.getElementById('w2p-pt').textContent='Extracting content...';const res=await mammoth.extractRawText({arrayBuffer:ab});const text=res.value||'No content found.';ap('w2p-pf',70,95,400);document.getElementById('w2p-pt').textContent='Generating PDF...';const{jsPDF}=window.jspdf;const doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});const mg=20,pw=170,lh=7;let y=25;doc.setFont('helvetica','normal');doc.setFontSize(11);doc.setTextColor(30,30,30);text.split('\n').forEach(p=>{if(!p.trim()){y+=4;return;}doc.splitTextToSize(p.trim(),pw).forEach(l=>{if(y>272){doc.addPage();y=25;}doc.text(l,mg,y);y+=lh;});y+=3;});w2pB=doc.output('blob');ap('w2p-pf',95,100,200,()=>{H('w2p-prog');document.getElementById('w2p-msg').textContent='"'+w2pF.name.replace(/\.(doc|docx)$/i,'.pdf')+'" is ready!';S('w2p-ok');gaEvent('conversion_complete','Word to PDF',w2pF.name);});}catch(e){document.getElementById('w2p-pt').textContent='Error! Try again.';S('w2p-cvt');H('w2p-prog');}}
 function dlW2P(){if(!w2pB||!w2pF)return;dl(URL.createObjectURL(w2pB),w2pF.name.replace(/\.(doc|docx)$/i,'.pdf'));gaEvent('file_download','Word to PDF',w2pF.name);}
@@ -409,7 +497,7 @@ function dlW2P(){if(!w2pB||!w2pF)return;dl(URL.createObjectURL(w2pB),w2pF.name.r
 // PDF TO WORD
 let p2wF=null,p2wB=null;
 document.getElementById('p2w-in').addEventListener('change',e=>{if(e.target.files[0])p2wH(e.target.files[0]);});
-setupDrag('p2w-zone',f=>p2wH(f));
+setupDrag('p2w-zone',f=>p2wH(f[0]));
 function p2wH(f){H('p2w-err','p2w-ok','p2w-note');if(!f.name.match(/\.pdf$/i)){S('p2w-err');return;}p2wF=f;p2wB=null;document.getElementById('p2w-fn').textContent=f.name;document.getElementById('p2w-fs').textContent=fz(f.size);S('p2w-fi','flex');S('p2w-cvt');gaEvent('file_selected','PDF to Word',f.name);}
 async function doP2W(){if(!p2wF)return;H('p2w-cvt');S('p2w-prog');document.getElementById('p2w-pt').textContent='Loading PDF...';ap('p2w-pf',0,20,400);try{const ab=await p2wF.arrayBuffer();const pdf=await pdfjsLib.getDocument({data:ab}).promise;const total=pdf.numPages;document.getElementById('p2w-pt').textContent='Extracting from '+total+' page(s)...';ap('p2w-pf',20,70,800);let txt='';for(let i=1;i<=total;i++){const pg=await pdf.getPage(i);const tc=await pg.getTextContent();txt+='--- Page '+i+' ---\n'+tc.items.map(x=>x.str).join(' ')+'\n\n';}document.getElementById('p2w-pt').textContent='Creating Word file...';ap('p2w-pf',70,95,400);const{Document,Packer,Paragraph,TextRun}=docx;const paras=txt.split('\n').map(l=>{if(l.startsWith('--- Page'))return new Paragraph({children:[new TextRun({text:l,bold:true,color:'888888',size:20})],spacing:{before:300,after:100}});return new Paragraph({children:[new TextRun({text:l,size:24})],spacing:{after:80}});});const d=new Document({sections:[{properties:{},children:paras}]});p2wB=await Packer.toBlob(d);ap('p2w-pf',95,100,200,()=>{H('p2w-prog');document.getElementById('p2w-msg').textContent='"'+p2wF.name.replace(/\.pdf$/i,'.docx')+'" is ready!';S('p2w-ok');S('p2w-note');gaEvent('conversion_complete','PDF to Word',p2wF.name);});}catch(e){document.getElementById('p2w-pt').textContent='Error! Try a valid PDF.';S('p2w-cvt');H('p2w-prog');}}
 function dlP2W(){if(!p2wB||!p2wF)return;dl(URL.createObjectURL(p2wB),p2wF.name.replace(/\.pdf$/i,'.docx'));gaEvent('file_download','PDF to Word',p2wF.name);}
@@ -417,53 +505,47 @@ function dlP2W(){if(!p2wB||!p2wF)return;dl(URL.createObjectURL(p2wB),p2wF.name.r
 // MERGE PDF
 let mpdfFiles=[],mpdfBlob=null;
 document.getElementById('mpdf-in').addEventListener('change',e=>{if(e.target.files.length)mpdfAddFiles(e.target.files);});
-setupDrag('mpdf-zone',f=>mpdfAddFiles([f]));
-function mpdfAddFiles(files){H('mpdf-err','mpdf-ok');Array.from(files).forEach(f=>{if(!f.name.match(/\.pdf$/i))return;mpdfFiles.push(f);const li=document.createElement('div');li.className='ml-item';li.id='mpdf-item-'+(mpdfFiles.length-1);li.innerHTML='<div class="ml-icon">&#128196;</div><div class="ml-info"><div class="ml-name">'+f.name+'</div><div class="ml-size">'+fz(f.size)+'</div></div><button class="ml-rm" onclick="mpdfRemove('+(mpdfFiles.length-1)+')">&#10005;</button>';document.getElementById('mpdf-list').appendChild(li);});if(mpdfFiles.length>=2){S('mpdf-cvt');S('mpdf-add');}else if(mpdfFiles.length===1){H('mpdf-cvt');S('mpdf-add');}document.getElementById('mpdf-in').value='';}
-function mpdfRemove(i){mpdfFiles.splice(i,1);document.getElementById('mpdf-list').innerHTML='';mpdfFiles.forEach((f,idx)=>{const li=document.createElement('div');li.className='ml-item';li.innerHTML='<div class="ml-icon">&#128196;</div><div class="ml-info"><div class="ml-name">'+f.name+'</div><div class="ml-size">'+fz(f.size)+'</div></div><button class="ml-rm" onclick="mpdfRemove('+idx+')">&#10005;</button>';document.getElementById('mpdf-list').appendChild(li);});if(mpdfFiles.length<2)H('mpdf-cvt');if(mpdfFiles.length===0)H('mpdf-add');}
-async function doMPDF(){if(mpdfFiles.length<2){S('mpdf-err');return;}H('mpdf-cvt','mpdf-err');S('mpdf-prog');document.getElementById('mpdf-pt').textContent='Merging PDFs...';ap('mpdf-pf',0,30,400);try{const{PDFDocument}=PDFLib;const merged=await PDFDocument.create();for(let i=0;i<mpdfFiles.length;i++){document.getElementById('mpdf-pt').textContent='Processing file '+(i+1)+' of '+mpdfFiles.length+'...';ap('mpdf-pf',30+(i/mpdfFiles.length*60),30+((i+1)/mpdfFiles.length*60),500);const ab=await mpdfFiles[i].arrayBuffer();const pdf=await PDFDocument.load(ab);const pages=await merged.copyPages(pdf,pdf.getPageIndices());pages.forEach(p=>merged.addPage(p));}document.getElementById('mpdf-pt').textContent='Finalizing...';ap('mpdf-pf',90,100,400);const bytes=await merged.save();mpdfBlob=new Blob([bytes],{type:'application/pdf'});H('mpdf-prog');document.getElementById('mpdf-msg').textContent=mpdfFiles.length+' PDFs merged successfully!';S('mpdf-ok');gaEvent('conversion_complete','Merge PDF',mpdfFiles.length+' files');}catch(e){document.getElementById('mpdf-pt').textContent='Error! Check PDF files.';S('mpdf-cvt');H('mpdf-prog');}}
-function dlMPDF(){if(!mpdfBlob)return;dl(URL.createObjectURL(mpdfBlob),'merged.pdf');gaEvent('file_download','Merge PDF','merged.pdf');}
+setupDrag('mpdf-zone',f=>mpdfAddFiles(f));
+function mpdfAddFiles(files){H('mpdf-err','mpdf-ok');Array.from(files).forEach(f=>{if(!f.name.match(/\.pdf$/i))return;mpdfFiles.push(f);const li=document.createElement('div');li.className='ml-item';li.innerHTML='<div class="ml-icon">&#128196;</div><div class="ml-info"><div class="ml-name">'+f.name+'</div><div class="ml-size">'+fz(f.size)+'</div></div>';document.getElementById('mpdf-list').appendChild(li);});if(mpdfFiles.length>=2){S('mpdf-cvt');S('mpdf-add');}else if(mpdfFiles.length===1){H('mpdf-cvt');S('mpdf-add');}document.getElementById('mpdf-in').value='';}
+async function doMPDF(){if(mpdfFiles.length<2){S('mpdf-err');return;}H('mpdf-cvt','mpdf-err');S('mpdf-prog');ap('mpdf-pf',0,30,400);try{const{PDFDocument}=PDFLib;const merged=await PDFDocument.create();for(let i=0;i<mpdfFiles.length;i++){const ab=await mpdfFiles[i].arrayBuffer();const pdf=await PDFDocument.load(ab);const pages=await merged.copyPages(pdf,pdf.getPageIndices());pages.forEach(p=>merged.addPage(p));}const bytes=await merged.save();mpdfBlob=new Blob([bytes],{type:'application/pdf'});H('mpdf-prog');document.getElementById('mpdf-msg').textContent=mpdfFiles.length+' PDFs merged successfully!';S('mpdf-ok');}catch(e){S('mpdf-cvt');H('mpdf-prog');}}
+function dlMPDF(){if(!mpdfBlob)return;dl(URL.createObjectURL(mpdfBlob),'merged.pdf');}
 
 // SPLIT PDF
 let spdfF=null,spdfBlobs=[];
 document.getElementById('spdf-in').addEventListener('change',e=>{if(e.target.files[0])spdfH(e.target.files[0]);});
-setupDrag('spdf-zone',f=>spdfH(f));
-function spdfH(f){H('spdf-err','spdf-ok');if(!f.name.match(/\.pdf$/i)){S('spdf-err');return;}spdfF=f;spdfBlobs=[];document.getElementById('spdf-fn').textContent=f.name;document.getElementById('spdf-fs').textContent=fz(f.size);S('spdf-fi','flex');S('spdf-cvt');gaEvent('file_selected','Split PDF',f.name);}
-async function doSPDF(){if(!spdfF)return;H('spdf-cvt');S('spdf-prog');document.getElementById('spdf-pt').textContent='Loading PDF...';ap('spdf-pf',0,20,400);try{const{PDFDocument}=PDFLib;const ab=await spdfF.arrayBuffer();const srcPdf=await PDFDocument.load(ab);const total=srcPdf.getPageCount();document.getElementById('spdf-pt').textContent='Splitting '+total+' pages...';spdfBlobs=[];const dlList=document.getElementById('spdf-dllist');dlList.innerHTML='';for(let i=0;i<total;i++){ap('spdf-pf',20+(i/total*75),20+((i+1)/total*75),300);const newPdf=await PDFDocument.create();const[page]=await newPdf.copyPages(srcPdf,[i]);newPdf.addPage(page);const bytes=await newPdf.save();const blob=new Blob([bytes],{type:'application/pdf'});spdfBlobs.push(blob);const name=spdfF.name.replace(/\.pdf$/i,'')+'_page'+(i+1)+'.pdf';const item=document.createElement('div');item.className='dl-item';item.innerHTML='<span class="dl-name">&#128196; '+name+'</span><button class="btn btn-blue" style="padding:6px 14px;font-size:12px;" onclick="dlSPDFPage('+i+',\''+name+'\')">&#8681; Download</button>';dlList.appendChild(item);}ap('spdf-pf',95,100,300);H('spdf-prog');document.getElementById('spdf-msg').textContent=total+' pages split successfully!';S('spdf-ok');gaEvent('conversion_complete','Split PDF',total+' pages');}catch(e){document.getElementById('spdf-pt').textContent='Error! Check PDF file.';S('spdf-cvt');H('spdf-prog');}}
-function dlSPDFPage(i,name){if(!spdfBlobs[i])return;dl(URL.createObjectURL(spdfBlobs[i]),name);gaEvent('file_download','Split PDF',name);}
+setupDrag('spdf-zone',f=>spdfH(f[0]));
+function spdfH(f){H('spdf-err','spdf-ok');if(!f.name.match(/\.pdf$/i)){S('spdf-err');return;}spdfF=f;spdfBlobs=[];document.getElementById('spdf-fn').textContent=f.name;document.getElementById('spdf-fs').textContent=fz(f.size);S('spdf-fi','flex');S('spdf-cvt');}
+async function doSPDF(){if(!spdfF)return;H('spdf-cvt');S('spdf-prog');try{const{PDFDocument}=PDFLib;const ab=await spdfF.arrayBuffer();const srcPdf=await PDFDocument.load(ab);const total=srcPdf.getPageCount();const dlList=document.getElementById('spdf-dllist');dlList.innerHTML='';for(let i=0;i<total;i++){const newPdf=await PDFDocument.create();const[page]=await newPdf.copyPages(srcPdf,[i]);newPdf.addPage(page);const bytes=await newPdf.save();const blob=new Blob([bytes],{type:'application/pdf'});spdfBlobs.push(blob);const name=spdfF.name.replace(/\.pdf$/i,'')+'_page'+(i+1)+'.pdf';const item=document.createElement('div');item.className='dl-item';item.innerHTML='<span class="dl-name">&#128196; '+name+'</span><button class="btn btn-blue" style="padding:6px 14px;font-size:12px;" onclick="dlSPDFPage('+i+',\''+name+'\')">&#8681; Download</button>';dlList.appendChild(item);}H('spdf-prog');S('spdf-ok');}catch(e){H('spdf-prog');S('spdf-cvt');}}
+function dlSPDFPage(i,name){if(spdfBlobs[i])dl(URL.createObjectURL(spdfBlobs[i]),name);}
 
-// JPG TO PNG
-let j2pF=null,j2pBlob=null;
-document.getElementById('j2p-in').addEventListener('change',e=>{if(e.target.files[0])j2pH(e.target.files[0]);});
-setupDrag('j2p-zone',f=>j2pH(f));
-function j2pH(f){H('j2p-err','j2p-ok');if(!f.type.match(/image\/jpe?g/i)){S('j2p-err');return;}j2pF=f;j2pBlob=null;const r=new FileReader();r.onload=e=>{document.getElementById('j2p-img').src=e.target.result;document.getElementById('j2p-fn').textContent=f.name;document.getElementById('j2p-fs').textContent=fz(f.size);S('j2p-fi','flex');S('j2p-prev');S('j2p-cvt');};r.readAsDataURL(f);gaEvent('file_selected','JPG to PNG',f.name);}
-function doJ2P(){if(!j2pF)return;H('j2p-cvt');S('j2p-prog');document.getElementById('j2p-pt').textContent='Converting to PNG...';ap('j2p-pf',0,85,500);const img=new Image();img.onload=function(){const c=document.getElementById('cv');c.width=img.width;c.height=img.height;c.getContext('2d').drawImage(img,0,0);c.toBlob(blob=>{j2pBlob=blob;ap('j2p-pf',85,100,200,()=>{H('j2p-prog');document.getElementById('j2p-msg').textContent='"'+j2pF.name.replace(/\.jpe?g$/i,'.png')+'" is ready! ('+fz(blob.size)+')';S('j2p-ok');gaEvent('conversion_complete','JPG to PNG',j2pF.name);});},'image/png');};img.src=document.getElementById('j2p-img').src;}
-function dlJ2P(){if(!j2pBlob||!j2pF)return;dl(URL.createObjectURL(j2pBlob),j2pF.name.replace(/\.jpe?g$/i,'.png'));gaEvent('file_download','JPG to PNG',j2pF.name);}
+// BULK JPG TO PNG UTILITY
+let j2pFiles=[];
+document.getElementById('j2p-in').addEventListener('change',e=>j2pHandleBatch(e.target.files));
+setupDrag('j2p-zone',f=>j2pHandleBatch(f));
+function j2pHandleBatch(files){H('j2p-err','j2p-ok');j2pFiles=Array.from(files).filter(f=>f.type.match(/image\/jpe?g/i));if(j2pFiles.length===0){S('j2p-err');return;}const list=document.getElementById('j2p-list');list.innerHTML='';j2pFiles.forEach(f=>{const row=document.createElement('div');row.className='ml-item';row.innerHTML=`<div class="ml-icon">🖼️</div><div class="ml-info"><div class="ml-name">${f.name}</div><div class="ml-size">${fz(f.size)}</div></div>`;list.appendChild(row});S('j2p-cvt');}
+async function doJ2PBulk(){H('j2p-cvt');S('j2p-prog');const dllist=document.getElementById('j2p-dllist');dllist.innerHTML='';for(let i=0;i<j2pFiles.length;i++){const file=j2pFiles[i];await new Promise(res=>{const reader=new FileReader();reader.onload=e=>{const img=new Image();img.onload=()=>{const c=document.getElementById('cv');c.width=img.width;c.height=img.height;c.getContext('2d').drawImage(img,0,0);c.toBlob(blob=>{const url=URL.createObjectURL(blob);const outName=file.name.replace(/\.jpe?g$/i,'.png');const row=document.createElement('div');row.className='dl-item';row.innerHTML=`<span class="dl-name">${outName} (${fz(blob.size)})</span><button class="btn btn-purple" style="padding:6px 12px; font-size:12px" onclick="dl('${url}','${outName}')">Download</button>`;dllist.appendChild(row);res();},'image/png');};img.src=e.target.result;};reader.readAsDataURL(file);});}H('j2p-prog');S('j2p-ok');}
 
-// PNG TO JPG
-let p2jF=null,p2jBlob=null;
-document.getElementById('p2j-in').addEventListener('change',e=>{if(e.target.files[0])p2jH(e.target.files[0]);});
-setupDrag('p2j-zone',f=>p2jH(f));
-function p2jH(f){H('p2j-err','p2j-ok');if(!f.type.match(/image\/png/i)){S('p2j-err');return;}p2jF=f;p2jBlob=null;const r=new FileReader();r.onload=e=>{document.getElementById('p2j-img').src=e.target.result;document.getElementById('p2j-fn').textContent=f.name;document.getElementById('p2j-fs').textContent=fz(f.size);S('p2j-fi','flex');S('p2j-prev');S('p2j-set');S('p2j-cvt');};r.readAsDataURL(f);gaEvent('file_selected','PNG to JPG',f.name);}
-function doP2J(){if(!p2jF)return;H('p2j-cvt');S('p2j-prog');document.getElementById('p2j-pt').textContent='Converting to JPG...';ap('p2j-pf',0,85,500);const img=new Image();img.onload=function(){const c=document.getElementById('cv');c.width=img.width;c.height=img.height;const ctx=c.getContext('2d');ctx.fillStyle='#ffffff';ctx.fillRect(0,0,c.width,c.height);ctx.drawImage(img,0,0);const q=parseInt(document.getElementById('p2j-sl').value)/100;c.toBlob(blob=>{p2jBlob=blob;ap('p2j-pf',85,100,200,()=>{H('p2j-prog');document.getElementById('p2j-msg').textContent='"'+p2jF.name.replace(/\.png$/i,'.jpg')+'" is ready! ('+fz(blob.size)+')';S('p2j-ok');gaEvent('conversion_complete','PNG to JPG',p2jF.name);});},'image/jpeg',q);};img.src=document.getElementById('p2j-img').src;}
-function dlP2J(){if(!p2jBlob||!p2jF)return;dl(URL.createObjectURL(p2jBlob),p2jF.name.replace(/\.png$/i,'.jpg'));gaEvent('file_download','PNG to JPG',p2jF.name);}
+// BULK PNG TO JPG UTILITY
+let p2jFiles=[];
+document.getElementById('p2j-in').addEventListener('change',e=>p2jHandleBatch(e.target.files));
+setupDrag('p2j-zone',f=>p2jHandleBatch(f));
+function p2jHandleBatch(files){H('p2j-err','p2j-ok');p2jFiles=Array.from(files).filter(f=>f.type.match(/image\/png/i));if(p2jFiles.length===0){S('p2j-err');return;}const list=document.getElementById('p2j-list');list.innerHTML='';p2jFiles.forEach(f=>{const row=document.createElement('div');row.className='ml-item';row.innerHTML=`<div class="ml-icon">🖼️</div><div class="ml-info"><div class="ml-name">${f.name}</div><div class="ml-size">${fz(f.size)}</div></div>`;list.appendChild(row);});S('p2j-set');S('p2j-cvt');}
+async function doP2JBulk(){H('p2j-cvt','p2j-set');S('p2j-prog');const dllist=document.getElementById('p2j-dllist');dllist.innerHTML='';const q=parseInt(document.getElementById('p2j-sl').value)/100;for(let i=0;i<p2jFiles.length;i++){const file=p2jFiles[i];await new Promise(res=>{const reader=new FileReader();reader.onload=e=>{const img=new Image();img.onload=()=>{const c=document.getElementById('cv');c.width=img.width;c.height=img.height;const ctx=c.getContext('2d');ctx.fillStyle='#ffffff';ctx.fillRect(0,0,c.width,c.height);ctx.drawImage(img,0,0);c.toBlob(blob=>{const url=URL.createObjectURL(blob);const outName=file.name.replace(/\.png$/i,'.jpg');const row=document.createElement('div');row.className='dl-item';row.innerHTML=`<span class="dl-name">${outName} (${fz(blob.size)})</span><button class="btn btn-blue" style="padding:6px 12px; font-size:12px" onclick="dl('${url}','${outName}')">Download</button>`;dllist.appendChild(row);res();},'image/jpeg',q);};img.src=e.target.result;};reader.readAsDataURL(file);});}H('p2j-prog');S('p2j-ok');}
 
 // RESIZE IMAGE
 let riF=null,riBlob=null,riOrigW=0,riOrigH=0;
 document.getElementById('ri-in').addEventListener('change',e=>{if(e.target.files[0])riH(e.target.files[0]);});
-setupDrag('ri-zone',f=>riH(f));
-function riH(f){H('ri-err','ri-ok');if(!f.type.match(/image\/(jpeg|png|webp)/i)){S('ri-err');return;}riF=f;riBlob=null;const r=new FileReader();r.onload=e=>{const img=new Image();img.onload=function(){riOrigW=img.width;riOrigH=img.height;document.getElementById('ri-w').value=img.width;document.getElementById('ri-h').value=img.height;document.getElementById('ri-orig-size').textContent=img.width+' x '+img.height+' px';};img.src=e.target.result;document.getElementById('ri-img').src=e.target.result;document.getElementById('ri-fn').textContent=f.name;document.getElementById('ri-fs').textContent=fz(f.size);S('ri-fi','flex');S('ri-prev');S('ri-set');S('ri-cvt');};r.readAsDataURL(f);gaEvent('file_selected','Resize Image',f.name);}
-function doRI(){if(!riF)return;const wVal=parseInt(document.getElementById('ri-w').value);const hVal=parseInt(document.getElementById('ri-h').value);if(!wVal&&!hVal){S('ri-err');return;}H('ri-cvt');S('ri-prog');document.getElementById('ri-pt').textContent='Resizing...';ap('ri-pf',0,80,400);const img=new Image();img.onload=function(){let nw=wVal||Math.round(riOrigW*(hVal/riOrigH));let nh=hVal||Math.round(riOrigH*(wVal/riOrigW));const c=document.getElementById('cv');c.width=nw;c.height=nh;c.getContext('2d').drawImage(img,0,0,nw,nh);c.toBlob(blob=>{riBlob=blob;ap('ri-pf',80,100,300,()=>{H('ri-prog');document.getElementById('ri-msg').textContent='Resized to '+nw+'x'+nh+'px ('+fz(blob.size)+')';S('ri-ok');gaEvent('conversion_complete','Resize Image',nw+'x'+nh);});},'image/jpeg',0.92);};img.src=document.getElementById('ri-img').src;}
-function dlRI(){if(!riBlob||!riF)return;dl(URL.createObjectURL(riBlob),riF.name.replace(/\.\w+$/,'_resized.jpg'));gaEvent('file_download','Resize Image',riF.name);}
+setupDrag('ri-zone',f=>riH(f[0]));
+function riH(f){H('ri-err','ri-ok');if(!f.type.match(/image\/(jpeg|png|webp)/i)){S('ri-err');return;}riF=f;const r=new FileReader();r.onload=e=>{const img=new Image();img.onload=function(){riOrigW=img.width;riOrigH=img.height;document.getElementById('ri-w').value=img.width;document.getElementById('ri-h').value=img.height;document.getElementById('ri-orig-size').textContent=img.width+' x '+img.height+' px';};img.src=e.target.result;document.getElementById('ri-img').src=e.target.result;document.getElementById('ri-fn').textContent=f.name;document.getElementById('ri-fs').textContent=fz(f.size);S('ri-fi','flex');S('ri-prev');S('ri-set');S('ri-cvt');};r.readAsDataURL(f);}
+function doRI(){if(!riF)return;const wVal=parseInt(document.getElementById('ri-w').value);const hVal=parseInt(document.getElementById('ri-h').value);H('ri-cvt');S('ri-prog');const img=new Image();img.onload=function(){let nw=wVal||Math.round(riOrigW*(hVal/riOrigH));let nh=hVal||Math.round(riOrigH*(wVal/riOrigW));const c=document.getElementById('cv');c.width=nw;c.height=nh;c.getContext('2d').drawImage(img,0,0,nw,nh);c.toBlob(blob=>{riBlob=blob;H('ri-prog');document.getElementById('ri-msg').textContent='Resized to '+nw+'x'+nh+'px ('+fz(blob.size)+')';S('ri-ok');},'image/jpeg',0.92);};img.src=document.getElementById('ri-img').src;}
+function dlRI(){if(riBlob&&riF)dl(URL.createObjectURL(riBlob),riF.name.replace(/\.\w+$/,'_resized.jpg'));}
 
-// IMAGE COMPRESSOR
-let icF=null,icBlob=null,icOB=0;
-document.getElementById('ic-in').addEventListener('change',e=>{if(e.target.files[0])icH(e.target.files[0]);});
-setupDrag('ic-zone',f=>icH(f));
-function icH(f){H('ic-err','ic-ok');if(!f.type.match(/image\/(jpeg|png|webp)/i)){S('ic-err');return;}icF=f;icOB=f.size;icBlob=null;const r=new FileReader();r.onload=e=>{document.getElementById('ic-oi').src=e.target.result;document.getElementById('ic-os').textContent=fz(f.size);document.getElementById('ic-fn').textContent=f.name;document.getElementById('ic-fs').textContent=fz(f.size);S('ic-fi','flex');S('ic-set');S('ic-pg','grid');S('ic-cvt');icPrev();};r.readAsDataURL(f);gaEvent('file_selected','Image Compressor',f.name);}
-function icQ(v){document.getElementById('ic-qv').textContent=v+'%';if(icF)icPrev();}
-function icPrev(){const img=new Image();img.onload=function(){const c=document.getElementById('cv');c.width=img.width;c.height=img.height;c.getContext('2d').drawImage(img,0,0);const q=parseInt(document.getElementById('ic-sl').value)/100;c.toBlob(blob=>{const url=URL.createObjectURL(blob);document.getElementById('ic-ci').src=url;document.getElementById('ic-cs').textContent=fz(blob.size);const sv=Math.max(0,Math.round((1-blob.size/icOB)*100));const b=document.getElementById('ic-sv');b.textContent='↓ '+sv+'% smaller';b.style.display=sv>0?'inline-block':'none';},'image/jpeg',q);};img.src=document.getElementById('ic-oi').src;}
-function doIC(){if(!icF)return;H('ic-cvt');S('ic-prog');document.getElementById('ic-pt').textContent='Compressing...';ap('ic-pf',0,60,400);const img=new Image();img.onload=function(){const c=document.getElementById('cv');c.width=img.width;c.height=img.height;c.getContext('2d').drawImage(img,0,0);const q=parseInt(document.getElementById('ic-sl').value)/100;c.toBlob(blob=>{icBlob=blob;ap('ic-pf',60,100,400,()=>{H('ic-prog');const sv=Math.max(0,Math.round((1-blob.size/icOB)*100));document.getElementById('ic-sto').textContent=fz(icOB);document.getElementById('ic-stc').textContent=fz(blob.size);document.getElementById('ic-sts').textContent=sv+'%';document.getElementById('ic-msg').textContent='Reduced by '+sv+'%!';S('ic-ok');gaEvent('conversion_complete','Image Compressor',icF.name+' -'+sv+'%');});},'image/jpeg',q);};img.src=document.getElementById('ic-oi').src;}
-function dlIC(){if(!icBlob||!icF)return;dl(URL.createObjectURL(icBlob),icF.name.replace(/\.\w+$/,'_compressed.jpg'));gaEvent('file_download','Image Compressor',icF.name);}
+// BULK IMAGE COMPRESSOR
+let icFiles=[];
+document.getElementById('ic-in').addEventListener('change',e=>icHandleBatch(e.target.files));
+setupDrag('ic-zone',f=>icHandleBatch(f));
+function icHandleBatch(files){H('ic-err','ic-ok');icFiles=Array.from(files).filter(f=>f.type.match(/image\/(jpeg|png|webp)/i));if(icFiles.length===0){S('ic-err');return;}const list=document.getElementById('ic-list');list.innerHTML='';icFiles.forEach(f=>{const row=document.createElement('div');row.className='ml-item';row.innerHTML=`<div class="ml-icon">📉</div><div class="ml-info"><div class="ml-name">${f.name}</div><div class="ml-size">Original: ${fz(f.size)}</div></div>`;list.appendChild(row);});S('ic-set');S('ic-cvt');}
+async function doICBulk(){H('ic-cvt','ic-set');S('ic-prog');const dllist=document.getElementById('ic-dllist');dllist.innerHTML='';const q=parseInt(document.getElementById('ic-sl').value)/100;for(let i=0;i<icFiles.length;i++){const file=icFiles[i];await new Promise(res=>{const reader=new FileReader();reader.onload=e=>{const img=new Image();img.onload=()=>{const c=document.getElementById('cv');c.width=img.width;c.height=img.height;c.getContext('2d').drawImage(img,0,0);c.toBlob(blob=>{const url=URL.createObjectURL(blob);const outName=file.name.replace(/\.\w+$/,'_compressed.jpg');const savedPct=Math.max(0,Math.round((1-blob.size/file.size)*100));const row=document.createElement('div');row.className='dl-item';row.innerHTML=`<span class="dl-name">${outName} (${fz(blob.size)}) <b style="color:#22c55e">-${savedPct}%</b></span><button class="btn btn-green" style="padding:6px 12px; font-size:12px" onclick="dl('${url}','${outName}')">Download</button>`;dllist.appendChild(row);res();},'image/jpeg',q);};img.src=e.target.result;};reader.readAsDataURL(file);});}H('ic-prog');S('ic-ok');}
 </script>
 </body>
 </html>
